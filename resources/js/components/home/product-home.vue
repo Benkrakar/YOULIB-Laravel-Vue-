@@ -1,0 +1,38 @@
+<template>
+    <div>
+        <div class="container">
+          <div class="d-flex justify-content-center">
+            <h1 class="mb-3 title-home ">
+              <span class="title-span">Nouveaux </span>livres
+            </h1>
+          </div>
+          <div class="row">
+               
+                    <div class="cartes_shop col-lg-3 col-sm-6 ">
+                        <div class="content_shop">
+                            <div class="content-overlay"></div>
+                            <img class="content-image" :src="require('../../../images/subss.jpg').default" >
+                            <div class="content-details fadeIn-bottom">
+                                <a class="m-2" href="#">
+                                    <i class="fas fa-heart fa-2x"></i>
+                                </a>
+                                <a class="m-2" href="#">
+                                    <i class="fas fa-shopping-cart fa-2x"></i>
+                                </a>
+                                <a class="m-2" href="#">
+                                    <i class="fas fa-eye fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <h4 class="mb-3  ">
+                                <span class="">Subs</span>
+                                <br> 23dh
+                            </h4>
+                        </div>
+                    </div>
+               
+          </div>
+        </div>
+    </div>
+</template>

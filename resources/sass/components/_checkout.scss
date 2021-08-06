@@ -1,0 +1,51 @@
+
+.cv-billing-form {
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
+    background: $light;
+    border-radius: 10px;
+    padding: 24px 30px 30px;
+
+ ul li {
+    margin-bottom: 20px;
+}
+ ul li:last-child {
+    margin-bottom: 0px;
+}
+ ul li p {
+    margin-bottom: 10px;
+}
+}
+
+.cv-billing {
+.cv-account-box {
+    align-items: center;
+    padding: 24px 30px 23px;
+}
+.cv-billing .cv-account-img {
+    margin-top: 0;
+}
+.cv-billing  .cv-account-info {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.cv-billing .cv-account-text {
+    padding-left: 50px;
+}
+
+.cv-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 43px;
+}
+.cv-heading h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: $primary;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+.cv-heading p {
+    margin: 0;
+}
+}

@@ -1,0 +1,170 @@
+
+.cv-account-box {
+    display: flex;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
+    background: $light;
+    border-radius: 10px;
+    padding: 24px 30px 30px;
+    margin-left: 160px;
+}
+.cv-account-img {
+    width: 250px;
+    margin-left: -160px;
+    margin-top: 34px;
+    position: relative;
+    height: fit-content;
+}
+.cv-account-text{
+    width: calc(100% - 210px);
+    padding-left: 30px;
+}
+.cv-account-img img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 5px solid $secondary;
+}
+.cv-profile-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+.cv-profile-svg svg {
+    width: 25px;
+    height: 25px;
+    fill: $light;
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cv-profile-svg input {
+    width: 255px;
+    z-index: 2;
+    opacity: 0;
+    transform: translate(0px, -30px);
+    cursor: pointer;
+    height: 275px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.cv-profile-svg:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: $secondary;
+    border-radius: 100%;
+}
+.cv-account-img:hover .cv-profile-svg {
+    opacity: 1;
+    visibility: visible;
+}
+.cv-ac-user-name h2 {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 0;
+}
+.cv-ac-user-name h2 span {
+    font-size: 16px;
+    color: $grey;
+    font-weight: 400;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 50px;
+}
+.cv-ac-user-name h2 span:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    width: 20px;
+    height: 1px;
+    content: '';
+    background: $grey;
+    margin: auto;
+}
+.cv-account-info {
+    border: 1px solid $light;
+    border-left: 0;
+    border-right: 0;
+    margin: 24px 0 30px;
+    padding: 22px 0 23px;
+} 
+.cv-account-info ul li{
+    display: flex;
+    margin-bottom: 10px;
+}
+.cv-account-info ul li p {
+    flex: 1;
+}
+.cv-account-info ul li p,.cv-account-info ul li:last-child{
+    margin-bottom: 0;
+}
+.cv-ac-info-edit ul li{
+    margin-bottom: 20px;
+}
+.cv-ac-info-edit ul li p{
+    margin-bottom: 10px;
+}
+.cv-ac-info-edit {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+.cv-edit-open .cv-ac-info-edit{
+    padding-top: 22px;
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+}
+.cv-edit-open .cv-btn.cv-edit-click,.cv-close-edit {
+    display: none;
+}
+.cv-edit-open .cv-close-edit{
+    display: block;
+}
+.cv-last-order table{
+    width: 100%;
+}
+.cv-ac-info-edit .cv-btn {
+    margin-top: 10px;
+}
+.cv-last-order table th {
+    background: $secondary;
+    color: $grey;
+    padding: 12px 20px 13px;
+    text-transform: capitalize;
+}
+.cv-last-order table th {
+    border-right: 1px solid $light;
+}
+.cv-last-order table th:last-child{
+    border: none;
+}
+.cv-last-order table td {
+    padding: 20px;
+    text-transform: capitalize;
+    border: 1px solid $light;
+    border-top: none;
+    max-width: 250px;
+}
+.cv-cart-img img {
+    width: 60px;
+}

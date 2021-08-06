@@ -1,0 +1,19 @@
+footer{
+    background-color: $background;
+    border-top: $primary solid 2px;
+    form{
+        .form-control{
+            background-color: rgba($dark,.3);
+            border: 1px solid rgba($dark,.7);
+            border-radius: 16px;
+        }
+    }
+    .vv{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-around;
+    }
+}

@@ -1,0 +1,214 @@
+
+.cv-deal {
+
+    margin: 9em 0 !important;
+    background-image: url(../../images/brandi.jpg);
+position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+height:100%;    
+.over{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black !important;
+    opacity: .4;
+  }
+}   
+.cv-deal-box h2 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 17px;
+}
+.cv-deal-box h3 {
+    font-size: 25px;
+    margin-bottom: 14px;
+    color: $primary;
+    margin-top: -6px;
+}
+
+.cv-deal-box {
+    box-shadow: 0px 0px 15px 0px $primary;
+    background: #fff;
+    padding: 54px 90px 90px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+.cv-feature-box {
+    display: flex;
+    border: 1px solid $primary;
+    padding: 20px 17px 13px 12px;
+    border-radius: 10px;
+    margin: 0 10px 30px;
+}
+.cv-feature-img {
+    i{
+        width:30px;
+        height: 30px;
+        color: $primary;
+    }
+ 
+}
+.cv-feature-img {
+    width: 60px;
+    height: 60px;
+    margin-left: -45px;
+    border: 1px solid $secondary;
+    padding: 10px;
+    background: #fff;
+    border-radius: 100%;
+    line-height: 35px;
+    text-align: center;
+    transition: 0.3s;
+}
+.cv-feature-box:hover .cv-feature-img {
+    transform: translateY(-5px);
+}
+.cv-feature-text{
+    padding-left: 24px;
+}
+.cv-feature-text h3{
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.cv-feature-text p{
+    margin: 0;
+    font-size: 15px;
+}
+
+
+
+
+.cv-footer {
+    background: #242424;
+}
+.cv-foot-box {
+    padding-bottom: 30px;
+}
+.cv-foot-box a, .cv-foot-box p,.cv-foot-box h2 {
+    color: #fff;
+}
+.cv-foot-box a:hover{
+    color: $primary;
+}
+.cv-foot-box h2 {
+    font-size: 25px;
+    margin-bottom: 16px;
+}
+.cv-foot-logo img {
+    margin-bottom: 22px;
+}
+.cv-foot-box ul li {
+    margin-bottom: 10px;
+}
+.cv-foot-links ul li{
+    position: relative;
+    padding-left: 15px;
+}
+.cv-foot-links ul li:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid $primary;
+    border-right: 2px solid $primary;
+    transform: rotate(45deg);
+    margin: auto;
+}
+.cv-foot-box ul li:last-child,.cv-foot-social li:last-child,.cv-foot-box p {
+    margin-bottom: 0px;
+}
+.cv-foot-box p {
+    :hover{
+        color: #fff;
+    }
+}
+.cv-foot-social li  {
+    i{
+        padding-top: 7px;
+        width: 14px;
+        height: 14px;
+        color: $background;
+    }
+  
+}
+.cv-foot-social li a {
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: $primary;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 3px;
+}
+.cv-foot-social li a:hover {
+    transform: translateY(-3px);
+}
+.cv-foot-box .cv-foot-social li {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+.cv-foot-social {
+    margin-top: 23px;
+}
+
+
+.cv-copyright p {
+    margin: 0;
+    color: #fff;
+    text-transform: capitalize;
+}
+.cv-copyright {
+    text-align: center;
+    background: $primary;
+    padding: 10px 0;
+}
+.cv-foot-newsbox h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.cv-foot-newsbox h2,.cv-foot-newsbox p{
+    color: #fff;
+}
+.cv-news-box .row {
+    align-items: center;
+}
+.cv-news-box .cv-foot-newsletter form {
+    margin-bottom: 0;
+}
+.cv-news-box {
+    padding-bottom: 43px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #484848;
+}
+.cv-foot-newsbox p {
+    margin-bottom: 0;
+}
+.cv-footer-two .cv-foot-payment img{
+    margin: 20px 0 0;
+}
+.cv-foot-contact p span {
+    color: $primary;
+}
+.cv-foot-contact p {
+    margin-bottom: 10px;
+}
+.cv-foot-contact p:last-child {
+    margin-bottom: 0px;
+}
+.cv-footer-two {
+    padding-top: 72px;
+}

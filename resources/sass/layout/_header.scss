@@ -1,0 +1,99 @@
+*{
+    font-family: $fontFamily;
+
+}
+
+// /*----------  HERO SECTION  ----------*/
+.hero-area{
+margin-bottom:10em;
+background-image: url(../../images/jess-bailey-l3N9Q27zULw-unsplash.jpg) !important;
+background-size:cover;
+background-repeat: no-repeat;
+     .content-block{
+         max-height: 14em;
+            span{ 
+             color:aliceblue !important;
+             font-size: $h1;
+             font-weight: bold;
+             letter-spacing: 0.05em;
+             position: relative;
+             font-family: $fontFamily;
+            }
+
+         
+         p {
+             color:$light;
+             font-size: $fontSize;
+         
+         }
+     }
+     @media (max-width: 768px) {
+        .content-block{
+            max-height: 14em;
+               span{ 
+                color:aliceblue !important;
+                font-size: $h2;
+                font-weight: bold;
+                letter-spacing: 0.05em;
+                position: relative;
+                font-family: $fontFamily;
+               }
+   
+            
+            p {
+                color:$light;
+                font-size: $fontSize;
+            
+            }
+        }
+     }
+ }
+ .hero-area {
+   position: relative;
+  
+  
+     // contents
+     
+     .content-block {
+      padding:11em 0 18em 0;
+     }
+     // advanced search
+     .advance-search {
+       
+         padding:40px 15px 25px 15px;
+         border-radius:3px;
+         margin-bottom:-9em;
+       
+         
+       
+         // custom form contron styles
+       
+      
+     }
+     .over{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: black !important;
+      opacity: .4;
+    }
+    @media (max-width: 1220px) {
+     .advance-search{
+        padding:0;
+        margin:0;
+        display: block;
+     }   
+    }
+ }
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 

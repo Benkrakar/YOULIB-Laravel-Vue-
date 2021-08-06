@@ -1,0 +1,18 @@
+// Styling not necessary
+
+.login-page {
+  height:100vh !important;
+
+  #content {
+  min-height: 100vh;
+  background-color: #e0e5ed;
+}
+.card {
+  box-shadow: 0 0 10px 0 $secondary,
+  0 10px 75px 0 rgba(55, 92, 192, 0.2);
+  border: none;
+}
+.card-header{
+  text-align: center;
+}
+}

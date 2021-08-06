@@ -1,0 +1,25 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@900&display=swap');
+// Variables
+@import "abstracts/variables";
+@import "layout/navbar";
+@import "layout/header";
+@import "components/cartes";
+@import "components/cartesheader";
+@import "components/carouselhome";
+@import "components/footer";
+@import "components/checkout";
+@import "components/account";;
+@import "components/header-cvdeal";
+@import "components/login";
+@import "dashboard/dashboard";
+@import "layout/cart";
+@import "layout/allproduct";
+@import "layout/singleproduct";
+@import "base/typography";
+
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';
