@@ -25,9 +25,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\RegisterController@login');
 
+Route::resource('categories', 'API\categoriesController');
+Route::resource('product', 'API\ProductController');
 Route::middleware('auth:api')->group( function (){
-    Route::resource('categories', 'API\categoriesController');
-    Route::resource('product', 'API\ProductController');
     Route::resource('commentaires', 'API\CommentairesController');
     Route::resource('subcategories', 'API\subCategoriesController');
     Route::get('product/subcategorie/{id}', 'API\ProductController@subcategorie');

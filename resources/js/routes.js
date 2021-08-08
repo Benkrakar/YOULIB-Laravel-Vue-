@@ -19,6 +19,7 @@ const routes = [
     },
     {
         path: '/home',
+        name:'home',
         component: home
     },
     {
@@ -37,20 +38,13 @@ const routes = [
     },
     {
       path: '/register',
+      name:'register',
       component: register
   },
    
     {
         path: '/dashboard',
         component: dashboard,
-        beforeEnter:(to,from,next) => {
-          if (!store.getters['auth/authenticated']) {
-            return next({
-              name:'login'
-            })
-          }
-          next()
-        },
         children: [
           {
             path: 'table',

@@ -31,15 +31,15 @@ class UsersController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make($input , [
-            // 'password' =>'required',
-            // 'c_password' =>'required|same:password',
+            'password' =>'required',
+            'c_password' =>'required|same:password',
+            'image' =>'image|mimes:jpeg,png,jpg,gif,svg',
+
         ]  );
         if ($image = $request->file('image')) {
-          $destinationPath = 'image/';
-          $userImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-          $image->move($destinationPath, $userImage);
-          $input['image'] = $userImage;
-      }
+
+          $path = $request->file('image')->store('user');
+       }
       if ($validator->fails()) {
         return $this->sendError('Please validate error' ,$validator->errors() );
           }
@@ -52,7 +52,7 @@ class UsersController extends BaseController
           $user->quartier= $input['quartier'];
           $user->code_postale= $input['code_postale'];
           $user->image= $input['image'];
-          $user->save();
+          $user->update();
     return $this->sendResponse(new UsersResource($user) ,'User updated successfully' );
 
    }

@@ -9,7 +9,9 @@ export default {
     getters: {
         authenticated(state){
             return state.token && state.user;
+            
         },
+        isLoggedIn: state => !!state.token,
         user(state){
             return state.user;
         }
@@ -35,6 +37,7 @@ export default {
             dispatch("attempt", response.data.data.token);
         },
         async login({ dispatch }, credentials) {
+            console.log()
             let response = await axios.post("/login", credentials);
 
             // console.log(response.data.data.token);

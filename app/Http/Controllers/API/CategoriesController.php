@@ -14,7 +14,7 @@ class CategoriesController extends BaseController
    
     public function index()
     {
-        $categories = categorie::all();
+        $categories = categorie::paginate();
         return $this->sendResponse(categoriesResource::collection($categories),
           'All categories sent');
     }

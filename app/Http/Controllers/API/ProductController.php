@@ -32,13 +32,15 @@ class ProductController extends BaseController
         'price'=> 'required',
        ]  );
        if ($image = $request->file('image')) {
-        $productImage = $request->file('image')->store('/product_images/','public');
-        $input['image'] = $productImage;
+
+        $path = $request->file('image')->store('produits');
      }
        if ($validator->fails()) {
         return $this->sendError('Please validate error' ,$validator->errors() );
           }
-    $product = Product::create($input);
+          $input = $request->all();
+          $input['image'] =$path;
+          $product = Product::create($input);
     return $this->sendResponse(new ProductResource($product) ,'Product created successfully' );
     }
     public function show($id)

@@ -58,12 +58,17 @@ import { mapActions } from 'vuex'
         }
       };
     },
+    computed:{
+       isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    },
     methods: {
       ...mapActions({
         login:'auth/login'
       }),
       submit() {
         this.login(this.form)
+        
+           this.$router.push('/dashboard')
       }
     },
   
