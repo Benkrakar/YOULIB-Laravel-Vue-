@@ -1,8 +1,8 @@
 <template>
   <div class="sidebar">
     <div class="title ml-4">
-      Hi {{user? user.name:''}}
-      <img :src="`${$store.state.serverpath}/storage/${user? user.image:''}`" alt="" />
+      Hid {{user? user.name:''}}
+     
     </div>
     <div class="col-md-4 text-right">
       <a

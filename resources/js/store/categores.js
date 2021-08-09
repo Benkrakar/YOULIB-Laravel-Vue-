@@ -20,11 +20,8 @@ export default {
             state.categories = state.categories.filter(data => data.id !== id)
         },
         UPDATE_CATEGORIE:(state,data)=>{
-           state.categories.forEach(n =>{
-               if(n.id == data.id){
-                n.name= value.split(data.name);
-               }
-           })
+            state.categories.unshift(data);
+           
             // state.categories = state.categories.filter(data => data.id !== id)
         },
         GET_CATEGORIES(state, data) {
@@ -38,7 +35,7 @@ export default {
     actions: {
         
         async get_categories({ commit }, credentials ) {
-            console.log('get cat action')
+          
             let response = await axios.get("/categories", credentials);
             commit("GET_CATEGORIES", response.data.data);
 
@@ -58,6 +55,7 @@ export default {
                 commit("DELETE_CATEGORIE", id);
         },
         async update_categorie({ commit },data){
+            console.log(data.name)
           let response = await axios.put(`/categories/${data.id}`,{headers:{
                 Authorization: "Bearer " + localStorage.getItem("token")
                 }});

@@ -58,9 +58,7 @@ import { mapActions } from 'vuex'
         }
       };
     },
-    computed:{
-       isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
-    },
+   
     methods: {
       ...mapActions({
         login:'auth/login'

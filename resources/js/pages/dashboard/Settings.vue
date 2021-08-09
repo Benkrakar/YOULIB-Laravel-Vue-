@@ -2,6 +2,7 @@
     <div >
      <!-- <h2>hello mr {{ user.name }}</h2> -->
      <h2>your phone is {{ user.phone }}</h2>
+      <img :src="`${$store.state.serverpath}/storage/${user.image}`" alt="" />
     </div>
 </template>
 

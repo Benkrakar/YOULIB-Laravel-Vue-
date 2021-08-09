@@ -28,13 +28,12 @@ export default {
            })
         },
         GET_PRODUCTS(state, data) {
-         
+            console.log(data)
             state.products = data;
         },
     },
     actions: {
         async get_products({ commit } ) {
-            console.log('get products action')
             let response = await axios.get("/product");
             commit("GET_PRODUCTS", response.data.data);
         },
@@ -50,12 +49,11 @@ export default {
                 commit("DELETE_PRODUCTS", id);
         },
         async update_products({ commit },data){
-            console.log('update_products called',data)
                 let response = await axios.put(`/product/${data.id}`,{headers:{
                 Authorization: "Bearer " + localStorage.getItem("token")
                 }});
               
-                commit("UPDATE_PRODUCTS",response.data. data );
+                commit("UPDATE_PRODUCTS",data );
                 console.log(data)
                
         },

@@ -54,26 +54,7 @@ class ProductController extends BaseController
     }
     public function update(Request $request, Product $product)
     {
-        $input = $request->all();
-        $validator = Validator::make($input , [
-          // 'name'=> 'required',
-          // 'details'=> 'required',
-          // 'price'=> 'required',
-        ]  );
-        if ($image = $request->file('image')) {
-          $path = $request->file('image')->store('product');
-          $input['image'] =$path;
-       }
-
-        if ($validator->fails()) {
-         return $this->sendError('Please validate error' ,$validator->errors() );
-           }
-     $product->name = $input['name'];
-     $product->details = $input['details'];
-     $product->price = $input['price'];
-     $product->image = $input['image'];
-     $product->save();
-     return $this->sendResponse(new ProductResource($product) ,'Product updated successfully' );
+     dd($request->all(),$product);
 
     }
 

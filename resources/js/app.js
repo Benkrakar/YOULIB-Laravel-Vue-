@@ -18,18 +18,12 @@ Vue.use(Vuex)
 
 Vue.use(BootstrapVue)
 
-  
-
-// console.log(store.getters.isLoggedIn
-const router = new VueRouter(routes)
-const passRoutes = ["login","register","home"]
-router.beforeEach((to, from, next) => {
-  if (to.name !== 'login' && store.getters.isLoggedIn) next({ name: 'login' })
-  else next()
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
+  // store.dispatch('...mapGetters')
+  new Vue({
+    store,
+    render: h => h(App),
+    router:new VueRouter(routes)
+  }).$mount('#app')
 })
-new Vue({
-  store,
-  render: h => h(App),
-  router
-}).$mount('#app')
 

@@ -96,6 +96,7 @@
 
 <script>
 import {mapGetters,  mapActions } from 'vuex';
+import axios from 'axios'
 
 export default {
   name :'products',
@@ -146,36 +147,27 @@ export default {
       },
        setimageedit(){
        this.editproductsData.image = this.$refs.imageProduct.files[0]
-     
       },
-    // updatProducts(product){
-    //   this.showEditProductModal()
-     
-    //   this.editproductsData = product;
-    //    update_products( this.editproductsData)
-    //   // console.log( this.editproductsData)
-    //     //  this.update_product(this.editproductsData.id)
-    // },
- 
-  
       updatProducts(product){
       this.showEditProductModal()
      this.editproductsData = product
     return this.editproductsData;
     },
-       oop(){
-         console.log('image',this.editproductsData)
-         const df = new FormData()
-         df.id = this.editproductsData.id
-        df.append('id',this.editproductsData.id)
-        df.append('image',this.editproductsData.image)
-        df.append('name',this.editproductsData.name)
-        df.append('price',this.editproductsData.price)
-        df.append('details',this.editproductsData.details)
-        df.append('quantite',this.editproductsData.quantite)
-        df.append('id_subcategorie',this.editproductsData.id_subcategorie)
-        console.log(this.editproductsData.id)
-        this.update_products(df)
+       oop(editproductsData){
+         console.log('image',editproductsData)
+         const fd = new FormData()
+         fd.id = this.editproductsData.id
+           fd.append('image',this.editproductsData.image)
+        fd.append('name',this.editproductsData.name)
+        fd.append('price',this.editproductsData.price)
+        fd.append('details',this.editproductsData.details)
+        fd.append('quantite',this.editproductsData.quantite)
+        fd.append('id_subcategorie',this.editproductsData.id_subcategorie)
+        const response = axios.put(`/product/${ fd.id}`,fd,{headers:{
+                Authorization: "Bearer " + localStorage.getItem("token")
+                }});
+        // this.update_products(fd)
+        console.log('ezaf')
       },
     hideNewProductModal(){
         this.$refs.NewProductModal.hide()
