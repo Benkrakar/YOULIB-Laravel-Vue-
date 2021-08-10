@@ -52,9 +52,33 @@ class ProductController extends BaseController
               return $this->sendResponse(new ProductResource($product) ,'Product found successfully' );
 
     }
-    public function update(Request $request, Product $product)
+    public function updat(Request $request)
     {
-     dd($request->all(),$product);
+      $input = $request->all();
+      $validator = Validator::make($input , [
+       'name'=> 'required',
+      ]  );
+      if ($image = $request->file('image')) {
+
+        $path = $request->file('image')->store('produits');
+        $input['image'] =$path;
+     }
+    if ($validator->fails()) {
+      return $this->sendError('Please validate error' ,$validator->errors() );
+        }
+      $product->id = $request->$input->id;
+      $product = Product::find($product->id);
+      // $categorie->name = $input['name'];
+      // $categorie->save();
+      $product->update([
+        'name' => $input['name'],
+        'image' =>  $input['image'],
+        'details' => $input['details'],
+        'price' => $input['price'],
+        'quantite' => $input['quantite'],
+        'id_subcategorie' => $input['id_subcategorie'],
+      ]);
+      return $this->sendResponse(new ProductResource($product) ,'categories updated successfully' );
 
     }
 

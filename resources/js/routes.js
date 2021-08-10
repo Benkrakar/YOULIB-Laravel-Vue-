@@ -10,7 +10,6 @@ import produits from './pages/dashboard/produits.vue'
 import commandes from './pages/dashboard/commandes.vue'
 import categories from './pages/dashboard/categories.vue'
 import profile from './pages/dashboard/Profile.vue'
-import settings from './pages/dashboard/settings.vue'
 import store from './store/store'
 const routes = [
     {
@@ -66,10 +65,7 @@ const routes = [
             path: 'profile',
             component: profile,
           },
-          {
-            path: 'settings',
-            component: settings,
-          }
+         
         ]
       }
 ]

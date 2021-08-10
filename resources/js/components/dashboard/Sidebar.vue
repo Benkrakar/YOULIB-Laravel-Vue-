@@ -1,15 +1,8 @@
 <template>
   <div class="sidebar">
-    <div class="title ml-4">
-      Hid {{user? user.name:''}}
+    <div class="title ml-5">
+      <h2>{{user? user.name:''}}</h2>
      
-    </div>
-    <div class="col-md-4 text-right">
-      <a
-        @click.prevent="logout"
-        class="pr-5 fas fa-sign-out-alt fa-2x text-right"
-        >qsdfqsdfqs</a
-      >
     </div>
     <div class="menu-items">
       <router-link
@@ -72,18 +65,15 @@
         </div>
         <div class="link-container pt-1">utilisateurs</div>
       </router-link>
-      <router-link
-        to="/dashboard/settings"
-        active-class="active  d-flex justify-content-around"
-        tag="button"
-        exact
-        class="side-btn"
+     
+    </div>
+      <div class="col-md-4 text-right logout">
+         
+      <a
+        @click.prevent="logout"
+        class=" mt-5 fas fa-sign-out-alt fa-2x text-right"
+        >logout</a
       >
-        <div>
-          <i class="fas fa-cog fa-2x"></i>
-        </div>
-        <div class="link-container pt-1">Paramètres</div>
-      </router-link>
     </div>
   </div>
 </template>

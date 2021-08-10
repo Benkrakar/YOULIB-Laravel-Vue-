@@ -10,11 +10,11 @@ use App\Http\Controllers\API\BaseController as BaseController;
 
 
 class CategoriesController extends BaseController
-{
+{ 
    
     public function index()
     {
-        $categories = categorie::paginate();
+        $categories = categorie::orderBy('id','desc')->get();
         return $this->sendResponse(categoriesResource::collection($categories),
           'All categories sent');
     }
@@ -60,8 +60,11 @@ class CategoriesController extends BaseController
         return $this->sendError('Please validate error' ,$validator->errors() );
           }
           $categorie = categorie::find($id);
-          $categorie->name = $input['name'];
-          $categorie->save();
+          // $categorie->name = $input['name'];
+          // $categorie->save();
+          $categorie->update([
+            'name' => $input['name']
+          ]);
           return $this->sendResponse(new categoriesResource($categorie) ,'categories updated successfully' );
     }
 

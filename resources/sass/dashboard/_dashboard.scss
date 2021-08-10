@@ -102,3 +102,18 @@
 		background-color:$light !important;
 	}
 }
+.user_img{
+	img{
+
+		width: 6em !important;
+		height: 6em !important;
+		border-radius: 50% !important;
+	}
+}
+.logout{
+	a{
+		padding-left: 3em !important;
+		color: $light !important;
+		cursor: pointer;
+	}
+}

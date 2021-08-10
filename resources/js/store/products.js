@@ -28,7 +28,7 @@ export default {
            })
         },
         GET_PRODUCTS(state, data) {
-            console.log(data)
+            console.log(data.type)
             state.products = data;
         },
     },
@@ -48,12 +48,13 @@ export default {
                 }});
                 commit("DELETE_PRODUCTS", id);
         },
-        async update_products({ commit },data){
-                let response = await axios.put(`/product/${data.id}`,{headers:{
-                Authorization: "Bearer " + localStorage.getItem("token")
+        async update_products({ commit },credentials){
+                let response = await axios.post(`/produc`,credentials,{headers:{
+                "Content-Type": "multipart/form-data",
+                // Authorization: "Bearer " + localStorage.getItem("token")
                 }});
               
-                commit("UPDATE_PRODUCTS",data );
+                commit("UPDATE_PRODUCTS",response.data.data.data );
                 console.log(data)
                
         },

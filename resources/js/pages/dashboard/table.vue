@@ -10,9 +10,7 @@
               <div class="pl-5 col-md-4">
               <h3>Dashboard</h3>
             </div>
-            <div class="col-md-4 text-right">
-              <i class="pr-5 fas fa-sign-out-alt fa-2x text-right"></i>
-            </div>
+        
           </div>
           <div class="row mt-5">
             <div class="col-md-4">

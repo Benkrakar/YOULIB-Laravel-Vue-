@@ -31,9 +31,9 @@ class UsersController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make($input , [
-            'password' =>'required',
-            'c_password' =>'required|same:password',
-            'image' =>'image|mimes:jpeg,png,jpg,gif,svg',
+            // 'password' =>'required',
+            // 'c_password' =>'required|same:password',
+            // 'image' =>'image|mimes:jpeg,png,jpg,gif,svg',
 
         ]  );
         if ($image = $request->file('image')) {
@@ -44,15 +44,18 @@ class UsersController extends BaseController
         return $this->sendError('Please validate error' ,$validator->errors() );
           }
           $input['password'] = Hash::make($input['password']);
-          $user->name = $input['name'];
-          $user->email = $input['email'];
-          $user->password = $input['password'];
-          $user->phone= $input['phone'];
-          $user->ville= $input['ville'];
-          $user->quartier= $input['quartier'];
-          $user->code_postale= $input['code_postale'];
-          $user->image= $input['image'];
-          $user->update();
+          // $user->name = $input['name'];
+          // $user->email = $input['email'];
+          // $user->password = $input['password'];
+          // $user->phone= $input['phone'];
+          // $user->ville= $input['ville'];
+          // $user->quartier= $input['quartier'];
+          // $user->code_postale= $input['code_postale'];
+          // $user->image= $input['image'];
+          // $user->save();
+          $user->update([
+            'name' => $input['name']
+          ]);
     return $this->sendResponse(new UsersResource($user) ,'User updated successfully' );
 
    }

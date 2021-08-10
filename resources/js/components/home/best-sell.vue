@@ -16,11 +16,10 @@
 
 
             <div class="carousel-item active ">
-                  <div class="cartes_shop mr-5 ">
+                  <div class="cartes_shop mr-5 " v-for="(product, index) in products" :key="index">
                     <div class="content_shop">
                         <div class="content-overlay"></div>
-                        <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                        <div class="content-details fadeIn-bottom">
+                          <img class="content-image" :src="`${$store.state.serverpath}/storage/${product.image}`" alt="">                        <div class="content-details fadeIn-bottom">
                           <a class="m-2" href="#">
                             <i class="fas fa-heart fa-2x"></i>
                           </a>
@@ -32,213 +31,13 @@
                           </a>
                         </div>
                     </div>
-                    <h4 class="title">subs<br>  25.00 dh</h4>
+                    <h4 class="title">{{product.name }}<br> {{product.price }} dh</h4>
                   </div>
-                  <div class="cartes_shop mr-5 ">
-                    <div class="content_shop">
-                        <div class="content-overlay"></div>
-                        <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                        <div class="content-details fadeIn-bottom">
-                          <a class="m-2" href="#">
-                            <i class="fas fa-heart fa-2x"></i>
-                          </a>
-                          <a class="m-2" href="#">
-                              <i class="fas fa-shopping-cart fa-2x"></i>
-                          </a>
-                          <a class="m-2" href="#">
-                            <i class="fas fa-eye fa-2x"></i>
-                          </a>
-                        </div>
-                    </div>
-                    <h4 class="title">subs<br>  25.00 dh</h4>
-                  </div>
-                  <div class="cartes_shop mr-5 ">
-                    <div class="content_shop">
-                        <div class="content-overlay"></div>
-                        <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                        <div class="content-details fadeIn-bottom">
-                          <a class="m-2" href="#">
-                            <i class="fas fa-heart fa-2x"></i>
-                          </a>
-                          <a class="m-2" href="#">
-                              <i class="fas fa-shopping-cart fa-2x"></i>
-                          </a>
-                          <a class="m-2" href="#">
-                            <i class="fas fa-eye fa-2x"></i>
-                          </a>
-                        </div>
-                    </div>
-                    <h4 class="title">subs<br>  25.00 dh</h4>
-                  </div>
-                  <div class="cartes_shop mr-5 ">
-                    <div class="content_shop">
-                        <div class="content-overlay"></div>
-                        <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                        <div class="content-details fadeIn-bottom">
-                          <a class="m-2" href="#">
-                            <i class="fas fa-heart fa-2x"></i>
-                          </a>
-                          <a class="m-2" href="#">
-                              <i class="fas fa-shopping-cart fa-2x"></i>
-                          </a>
-                          <a class="m-2" href="#">
-                            <i class="fas fa-eye fa-2x"></i>
-                          </a>
-                        </div>
-                    </div>
-                    <h4 class="title">subs<br>  25.00 dh</h4>
-                  </div>
+                
                   
             </div>
-            <div class="carousel-item ">
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              
-            </div>
-            <div class="carousel-item ">
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-              <div class="cartes_shop mr-5 ">
-                <div class="content_shop">
-                    <div class="content-overlay"></div>
-                    <img class="content-image" :src="require('../../../images/subss.jpg').default">
-                    <div class="content-details fadeIn-bottom">
-                      <a class="m-2" href="#">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                          <i class="fas fa-shopping-cart fa-2x"></i>
-                      </a>
-                      <a class="m-2" href="#">
-                        <i class="fas fa-eye fa-2x"></i>
-                      </a>
-                    </div>
-                </div>
-                <h4 class="title">subs<br>  25.00 dh</h4>
-              </div>
-            </div>
+          
+         
             
           </div>
         </div>
@@ -257,3 +56,28 @@
   </section>
     </div>
 </template>
+
+<script>
+import {mapGetters,  mapActions } from 'vuex';
+
+export default {
+  name :'products',
+     computed:{
+        ...mapGetters({
+            products:'products/products',
+        }),
+       
+     },
+     created(){
+       this.get_products()
+     },
+  methods: {
+      ...mapActions({
+          get_products:'products/get_products',
+      }),
+
+   
+ 
+  }
+};
+</script>

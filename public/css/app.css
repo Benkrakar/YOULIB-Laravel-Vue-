@@ -1240,6 +1240,18 @@ footer .vv {
   background-color: #E0E4EC !important;
 }
 
+.user_img img {
+  width: 6em !important;
+  height: 6em !important;
+  border-radius: 50% !important;
+}
+
+.logout a {
+  padding-left: 3em !important;
+  color: #E0E4EC !important;
+  cursor: pointer;
+}
+
 .payment-info {
   background: #989CB8;
   padding: 10px;

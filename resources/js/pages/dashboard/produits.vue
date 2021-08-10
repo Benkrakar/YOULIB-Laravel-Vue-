@@ -60,11 +60,11 @@
             <div class="form-group">
               <label for="name">Entrer le nome</label>
               <input type="text" v-model="productsData.name" class="form-control" id="name"  name='name' placeholder="Entrer le nome du produite">
-              <input type="text" v-model="productsData.details" class="form-control" id="details"  name='details' placeholder="Entrer le nome du produite">
-              <input type="text" v-model="productsData.price" class="form-control" id="price"  name='price' placeholder="price">
+              <input type="text" v-model="productsData.details" class="form-control" id="details"  name='details' placeholder="details">
+              <input type="number" v-model="productsData.price" class="form-control" id="price"  name='price' placeholder="price">
               <input type="file" class="form-control" v-on:change="setimage" ref="imageProduct" id="image" name="image" required autocomplete="image"> 
-              <input type="text" v-model="productsData.quantite" class="form-control" id="quantite"  name='quantite' placeholder="Q">
-              <input type="text" v-model="productsData.id_subcategorie" class="form-control" id="id_subcategorie"  name='id_subcategorie' placeholder="SUB">
+              <input type="number" v-model="productsData.quantite" class="form-control" id="quantite"  name='quantite' placeholder="Q">
+              <input type="number" v-model="productsData.id_subcategorie" class="form-control" id="id_subcategorie"  name='id_subcategorie' placeholder="id_subcategorie">
               
             </div>
             <hr>
@@ -113,6 +113,7 @@ export default {
 
       },
         editproductsData:{
+          id: '',
            name: '',
         details: '',
         image: '',
@@ -153,21 +154,21 @@ export default {
      this.editproductsData = product
     return this.editproductsData;
     },
-       oop(editproductsData){
-         console.log('image',editproductsData)
-         const fd = new FormData()
-         fd.id = this.editproductsData.id
-           fd.append('image',this.editproductsData.image)
+       oop(){
+        
+        const fd = new FormData()
+       
+        fd.append('id',this.editproductsData.id)
+        fd.append('image',this.editproductsData.image)
         fd.append('name',this.editproductsData.name)
         fd.append('price',this.editproductsData.price)
         fd.append('details',this.editproductsData.details)
         fd.append('quantite',this.editproductsData.quantite)
         fd.append('id_subcategorie',this.editproductsData.id_subcategorie)
-        const response = axios.put(`/product/${ fd.id}`,fd,{headers:{
-                Authorization: "Bearer " + localStorage.getItem("token")
-                }});
-        // this.update_products(fd)
-        console.log('ezaf')
+        fd.append('_method','put')
+       
+        this.update_products(fd)
+      
       },
     hideNewProductModal(){
         this.$refs.NewProductModal.hide()

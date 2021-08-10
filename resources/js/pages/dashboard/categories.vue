@@ -17,7 +17,7 @@
       </div>
       <div class="row">
         <div class="col-md-10">
-          <h3></h3>
+          <h3>{{categories && categories != undefined && categories.length}}</h3>
         </div>
         <div class="col-md-2 d-flex">
           <button type="button" class="btn btn-category"  v-on:click="showNewCategoryModal">
@@ -109,8 +109,8 @@ export default {
       
           },
         created(){
-        console.log("from qsdf app.vue");
-      this.get_categories()
+          this.get_categories()
+          console.log(this.get_categories());
       //  this.$store.dispatch("categories/get_categories");
      },
   methods: {
@@ -124,10 +124,12 @@ export default {
     updatecategorie(categorie){
       this.showEditCategoryModal()
       this.editcategoryData = categorie;
-  
+      return this.editcategoryData
+
     },
   
      updatcategorie(){
+      //  console.log(this.editcategoryData)
          this.update_categorie(this.editcategoryData)
       //  console.log( this.editcategoryData.name)
     },

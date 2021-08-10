@@ -8,10 +8,10 @@
           </div>
           <div class="row">
                
-                    <div class="cartes_shop col-lg-3 col-sm-6 ">
+                    <div class="cartes_shop col-lg-3 col-sm-6 " v-for="(product, index) in products.slice(-4)" :key="index">
                         <div class="content_shop">
                             <div class="content-overlay"></div>
-                            <img class="content-image" :src="require('../../../images/subss.jpg').default" >
+                           <img class="content-image" :src="`${$store.state.serverpath}/storage/${product.image}`" alt="">
                             <div class="content-details fadeIn-bottom">
                                 <a class="m-2" href="#">
                                     <i class="fas fa-heart fa-2x"></i>
@@ -26,8 +26,8 @@
                         </div>
                         <div class="d-flex justify-content-center">
                             <h4 class="mb-3  ">
-                                <span class="">Subs</span>
-                                <br> 23dh
+                                <span class="">{{product.name }}</span>
+                                <br> {{product.price }} DH
                             </h4>
                         </div>
                     </div>
@@ -36,3 +36,28 @@
         </div>
     </div>
 </template>
+
+<script>
+import {mapGetters,  mapActions } from 'vuex';
+
+export default {
+  name :'products',
+     computed:{
+        ...mapGetters({
+            products:'products/products',
+        }),
+       
+     },
+     created(){
+       this.get_products()
+     },
+  methods: {
+      ...mapActions({
+          get_products:'products/get_products',
+      }),
+
+   
+ 
+  }
+};
+</script>
