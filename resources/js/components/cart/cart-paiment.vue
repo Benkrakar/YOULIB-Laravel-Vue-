@@ -1,15 +1,15 @@
 <template>
     <div>
         <div
-            class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded"
+            class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded"  v-for="(car, index) in cart" :key="index"
         >
             <div class="d-flex flex-row">
                 <img class="rounded" :src="image" width="40" />
                 <div class="ml-2">
                     <span class="font-weight-bold d-block"
-                        >Samsung galaxy Note 10&nbsp;</span
+                        >{{car.name }}</span
                     >
-                    <span class="spec">256GB, Navy Blue</span>
+                    <span class="spec">{{car.name }}</span>
                 </div>
             </div >
             <div class="cart_control d-flex flex-row align-items-end ">
@@ -19,7 +19,7 @@
                 <button @click="decrement()">+</button>
                 </div>
                 <span class="d-block ml-5 font-weight-bold mr-3">
-                    Totale: {{totalCart}}$
+                    Totale: {{car.name }}$
                     </span>
                 <a href="#"><i class="fas fa-trash  text-black-50"></i></a>
             </div>
@@ -28,29 +28,36 @@
 </template>
 
 <script>
+import {mapGetters,  mapActions } from 'vuex';
+
 export default {
-    props: {
-        id: Number,
-        qte: Number,
-        totalCart: Number,
-        parentHandler: Function
-    },
+      computed:{
+        ...mapGetters({
+               cart:'products/cart',
+        }),
+       
 
     data: () => {
         return {
-            image:
-                "https://flatsome3.uxthemes.com/wp-content/uploads/woocommerce-placeholder.png",
-            title: "subs",
-            description: "book of ssss",
-            price: 2,
+            name: '',
+            details: '',
+            image: '',
+            price: '',
+            quantite:'',
             totalCart: 0.0
         };
     },
 
     created() {
         this.total();
+        this.ADD_TO_CART()
+        console.log(this.ADD_TO_CART())
     },
     methods: {
+         ...mapActions({
+          GET_CART:'products/GET_CART',
+          ADD_TO_CART:'products/ADD_TO_CART',
+      }),
         total() {
             this.totalCart = parseFloat(this.qte) * parseFloat(this.price);
         },
@@ -61,6 +68,7 @@ export default {
             this.totalCart -= this.price;
         }
     }
+}
 };
 </script>
 

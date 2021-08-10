@@ -9,5 +9,11 @@
 
 export default {
   name: 'App',
+  computed:{
+    isLogged(){
+      return this.$store.getters.isLogged;
+    },
+  
+  }
 }
 </script>

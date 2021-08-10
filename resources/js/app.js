@@ -20,6 +20,7 @@ Vue.use(BootstrapVue)
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
   // store.dispatch('...mapGetters')
+  // console.log( this.store.getters.isLogged)
   new Vue({
     store,
     render: h => h(App),

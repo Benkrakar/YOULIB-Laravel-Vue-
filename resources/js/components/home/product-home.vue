@@ -16,7 +16,7 @@
                                 <a class="m-2" href="#">
                                     <i class="fas fa-heart fa-2x"></i>
                                 </a>
-                                <a class="m-2" href="#">
+                                <a class="m-2"   @click="ADD_TO_CART(product)">
                                     <i class="fas fa-shopping-cart fa-2x"></i>
                                 </a>
                                 <a class="m-2" href="#">
@@ -54,10 +54,10 @@ export default {
   methods: {
       ...mapActions({
           get_products:'products/get_products',
+          ADD_TO_CART:'products/ADD_TO_CART',
       }),
 
    
- 
   }
 };
 </script>

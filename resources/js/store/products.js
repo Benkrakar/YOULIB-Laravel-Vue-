@@ -4,13 +4,16 @@ export default {
     namespaced: true,
     state: {
         products: null,
-        editproduct:null
+        cart:null
 
     },
     getters: {
       products(state){
           return state.products;
-      }
+      },
+      cart(state){
+        return state.cart;
+    }
     },
     mutations: {
         SET_PRODUCTS:(state, data)=>{
@@ -19,6 +22,12 @@ export default {
         },
         DELETE_PRODUCTS:(state,id)=>{
             state.products = state.products.filter(data => data.id !== id)
+        },
+        ADD_CART:(state,id)=>{
+            state.cart = state.products.filter(data => data.id !==id)
+        },
+         GET:(state)=>{
+           RETURN(state.cart)
         },
         UPDATE_PRODUCTS:(state,data)=>{
            state.products.forEach(n =>{
@@ -58,6 +67,13 @@ export default {
                 console.log(data)
                
         },
+         ADD_TO_CART({ commit },data){
+            console.log(data)
+            commit("ADD_CART", data)
+        },
+        GET_CART({ commit }){
+        commit("GET")
+        }
 }
 }
 

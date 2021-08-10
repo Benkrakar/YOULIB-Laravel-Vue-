@@ -71,8 +71,16 @@
 
               </div>
               <div class="form-group d-flex justify-content-between">
-                <a href="#" class="btn btn-outline-secondary">Register</a>
-                <input type="submit" class="btn btn-primary" value="Login">
+                  <router-link
+                  to="/login"
+                  class="btn btn-outline-secondary"
+                  tag="button"
+                  exact
+                >
+                  login
+
+                  </router-link>
+                <input type="submit" class="btn btn-primary" value="Register">
               </div>
             </form>
           </div>
@@ -127,6 +135,7 @@ import { mapActions } from 'vuex'
        console.log( fd)
 
         this.register(fd)
+          this.$router.push('/dashboard')
       },
 
     },

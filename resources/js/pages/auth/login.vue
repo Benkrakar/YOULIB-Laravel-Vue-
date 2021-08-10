@@ -32,7 +32,15 @@
 
               </div>
               <div class="form-group d-flex justify-content-between">
-                <a href="#" class="btn btn-outline-secondary">Register</a>
+                 <router-link
+                  to="/register"
+                  class="btn btn-outline-secondary"
+                  tag="button"
+                  exact
+                >
+                  Register
+
+                  </router-link>
                 <input type="submit" class="btn btn-primary" value="Login">
               </div>
             </form>
