@@ -34,15 +34,13 @@ export default {
     },
     actions: {
         async get_profiles({ commit } ) {
-            let response = await axios.get("/users",{
-                params: {
-                  _limit: 1
-                 }
-              });
+            let response = await axios.get("/users", {headers:{
+                Authorization: "Bearer " + localStorage.getItem("token")
+                }});
             commit("GET_PROFILES", response.data.data);
         },
         async creat_profiles({ commit }, credentials) {
-            let response = await axios.post("/register", credentials,{headers:{ "Content-Type": "multipart/form-data"}});
+            let response = await axios.post("/register", credentials,{headers:{ "Content-Type": "multipart/form-data", Authorization: "Bearer " + localStorage.getItem("token")}});
                 commit("SET_PRODUCTS", response.data.data);
                 console.log( response.data.data)
         },

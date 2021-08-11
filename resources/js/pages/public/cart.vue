@@ -13,7 +13,7 @@
                     <!-- ///////// -->
                   
                   
-                    <Paiment  :qte="44"/>
+                    <Paiment />
                     <!-- //////////// -->
                 </div>
             </div>
@@ -38,15 +38,15 @@
                     <hr class="line">
                     <div class="d-flex justify-content-between information">
                       <span>Subtotal</span>
-                      <span>{{totalCart}}$</span>
+                      <span>$</span>
                     </div>
                     <div class="d-flex justify-content-between information">
                       <span>Shipping</span>
-                      <span>${{shippingCost}}</span>
+                      <span>$</span>
                     </div>
                     <div class="d-flex justify-content-between information">
                       <span>Total(Incl. taxes)</span>
-                      <span>${{ mainTotalCart }}</span>
+                      <span>$</span>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
                     <button class="btn  btn-checkout  d-flex  justify-content-center mt-3" type="button ">Checkout</button>
@@ -65,13 +65,19 @@ import Paiment from '../../components/cart/cart-paiment.vue';
 import Sid from '../../components/public/navbar.vue';
 import Footer from '../../components/public/footer.vue';
 export default {
-  
+  data : ()=>{
+
+    return {
+       cart : "",
+      }
+      },
 
   components:{
     Paiment,
     Sid,
     Footer
   },
+ 
   
 
 }

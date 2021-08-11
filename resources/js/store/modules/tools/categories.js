@@ -32,8 +32,10 @@ export default {
         },
     },
     actions: {
-        async get_categories({ commit }, credentials ) {
-            let response = await axios.get("/categories", credentials);
+        async get_categories({ commit } ) {
+            let response = await axios.get("/categories", {headers:{
+                Authorization: "Bearer " + localStorage.getItem("token")
+                }});
             commit("GET_CATEGORIES", response.data.data);
         },
         async creat_categorie({ commit }, credentials) {

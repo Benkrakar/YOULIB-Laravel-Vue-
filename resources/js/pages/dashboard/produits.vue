@@ -64,7 +64,10 @@
               <input type="number" v-model="productsData.price" class="form-control" id="price"  name='price' placeholder="price">
               <input type="file" class="form-control" v-on:change="setimage" ref="imageProduct" id="image" name="image" required autocomplete="image"> 
               <input type="number" v-model="productsData.quantite" class="form-control" id="quantite"  name='quantite' placeholder="Q">
-              <input type="number" v-model="productsData.id_subcategorie" class="form-control" id="id_subcategorie"  name='id_subcategorie' placeholder="id_subcategorie">
+              <!-- <input type="number" v-model="productsData.id_subcategorie" class="form-control" id="id_subcategorie"  name='id_subcategorie' placeholder="id_subcategorie"> -->
+                 <select v-model="productsData.id_subcategorie">
+                <option v-for="(subcategorie, index) in subcategories" :key="index" v-bind:value="subcategorie.id">{{subcategorie.name}}</option>
+              </select>
               
             </div>
             <hr>
@@ -126,20 +129,23 @@ export default {
      computed:{
         ...mapGetters({
             products:'products/products',
+            subcategories:'subcategories/subcategorie',
         }),
         computed(){
           // products:this.$store.getters['products/get_products']
         }
      },
      created(){
-       this.get_products()
+       this.get_products(),
+       this.get_subcategorie()
      },
   methods: {
       ...mapActions({
           creat_products:'products/creat_products',
           get_products:'products/get_products',
           update_products:'products/update_products',
-          delete_products:'products/delete_products'
+          delete_products:'products/delete_products',
+         get_subcategorie:'subcategories/get_subcategorie',
       }),
        setimage(){
        this.productsData.image = this.$refs.imageProduct.files[0]
@@ -157,6 +163,7 @@ export default {
         
         const fd = new FormData()
        
+        fd.id=this.editproductsData.id
         fd.append('id',this.editproductsData.id)
         fd.append('image',this.editproductsData.image)
         fd.append('name',this.editproductsData.name)

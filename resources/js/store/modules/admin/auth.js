@@ -9,7 +9,9 @@ export default {
     getters: {
         authenticated(state){
             return state.token && state.user;
+            
         },
+        isLoggedIn: state => !!state.token,
         user(state){
             return state.user;
         }
@@ -30,10 +32,15 @@ export default {
         async register({ dispatch }, credentials) {
             console.log(credentials)
             let response = await axios.post("/register", credentials,{headers:{ "Content-Type": "multipart/form-data"}});
+
+            // console.log(response.data.data.token);
             dispatch("attempt", response.data.data.token);
         },
         async login({ dispatch }, credentials) {
+            console.log()
             let response = await axios.post("/login", credentials);
+
+            // console.log(response.data.data.token);
             dispatch("attempt", response.data.data.token);
         },
         async attempt({ commit,state }, token) {
@@ -52,8 +59,8 @@ export default {
                 });
                 commit("SET_USER", response.data);
             } catch (e) {
-                commit("SET_USER", null);
-                commit("SET_TOKEN", null);
+                // commit("SET_USER", null);
+                // commit("SET_TOKEN", null);
             }
         },
         logout({commit}){

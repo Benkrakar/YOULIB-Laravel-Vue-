@@ -1,8 +1,10 @@
 <template>
   <div class="sidebar">
     <div class="title ml-5">
-      <h2>{{user? user.name:''}}</h2>
-     
+
+
+      <h3>Hi {{user? user.name:''}}</h3>
+   
     </div>
     <div class="menu-items">
       <router-link

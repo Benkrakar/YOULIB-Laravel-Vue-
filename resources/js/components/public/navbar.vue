@@ -52,9 +52,16 @@
                   <a class="btn btn-link" href="#"><i class="fas fa-heart"></i><span class="badge badge-danger">3</span></a>
     
                 </li>
-                <li class="nav-item  ml-md-3">
-                  <a class="btn btn-login btn-primary" href="#"><i class="far fa-user"></i> LogIn</a>
-                </li>
+                 <router-link
+                  to="/dashboard"
+                  active-class="active d-flex justify-content-around"
+                  tag="button"
+                  exact
+                >
+        <div>
+          <i class="fas fa-tachometer-alt "></i>
+        </div>
+      </router-link>
               </ul>
             </div>
         

@@ -66,19 +66,15 @@ import { mapActions } from 'vuex'
         }
       };
     },
-   
     methods: {
       ...mapActions({
         login:'auth/login'
       }),
-      submit() {
-        this.login(this.form)
-        
-           this.$router.push('/dashboard')
+        submit() {
+         this.login(this.form)
+         this.$router.push('/dashboard')
       }
     },
-  
-
   }
 
 </script>

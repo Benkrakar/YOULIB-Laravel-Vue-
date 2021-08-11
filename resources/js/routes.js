@@ -44,6 +44,14 @@ const routes = [
     {
         path: '/dashboard',
         component: dashboard,
+        beforeEnter:(to,from,next) => {
+          if (!store.getters['auth/authenticated'] && store.getters['auth/user'].role == 'client') {
+            return next({
+              name:'login'
+            })
+          }
+          next()
+        },
         children: [
           {
             path: 'table',

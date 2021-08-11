@@ -12,7 +12,7 @@ class SubcategoriesController extends BaseController
 {
     public function index()
     {
-        $subcategories = subcategories::all();
+        $subcategories = subcategories::orderBy('id','desc')->get();
         return $this->sendResponse(subcategoriesResource::collection($subcategories),
           'All subcategories sent');
     }
@@ -48,7 +48,10 @@ class SubcategoriesController extends BaseController
           }
           $subcategories= subcategories::find($id);
           $subcategories->name = $input['name'];
-          $subcategories->save();
+          $subcategories->update([
+            'name' => $input['name'],
+            'id_categorie' => $input['id_categorie']
+          ]);;
           return $this->sendResponse(new subcategoriesResource($subcategories) ,'subcategories updated successfully' );
     }
     public function destroy($id)

@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-around">
                   <i class="fas fa-boxes fa-2x"></i>
                   <b-card-text class="mt-2">Produits</b-card-text>
-                  <h2>22</h2>
+                  <h2>{{products.length}}</h2>
                 </div>
               </b-card>
             </div>
@@ -36,7 +36,7 @@
                 <div class="d-flex justify-content-around">
                   <i class="fas fa-users fa-2x"></i>
                   <b-card-text class="mt-2">utilisateurs</b-card-text>
-                  <h2>22</h2>
+                  <h2>{{users.length}}</h2>
                 </div>
               </b-card>
             </div>
@@ -75,16 +75,60 @@
             </div>
           </div>
           <div class="col-md-4">
-            <h3>Derniers inscrits</h3>
+            <!-- <h3>Derniers inscrits</h3> -->
+              <div class="row">
+              <div class="col-md-12 mt-5 category-table">
+                <h3>les dernières commandes</h3>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">id</th>
+                      <th scope="col">nom</th>
+                      <th scope="col">email</th>
+                      <th scope="col">ville</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(profile, index) in users" :key="index">
+                      <th scope="row ">{{profile.id }}</th>
+                      <th scope="row ">{{profile.name }}</th>
+                      <td class="">{{profile.email }}</td>
+                      <td class="">{{profile.ville }}</td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-export default {};
+import {mapGetters,  mapActions } from 'vuex';
+export default {
+ 
+  
+     computed:{
+        ...mapGetters({
+            products:'products/products',
+            users:'profiles/profiles',
+        }),
+      
+     },
+     created(){
+       this.get_products(),
+       this.get_profiles()
+     },
+  methods: {
+      ...mapActions({
+          get_products:'products/get_products',
+          get_profiles:'profiles/get_profiles',
+      }),
+  }
+};
 </script>
 
 <style scoped>

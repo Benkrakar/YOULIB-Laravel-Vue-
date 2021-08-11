@@ -20,7 +20,7 @@
           <h3>{{categories && categories != undefined && categories.length}}</h3>
         </div>
         <div class="col-md-2 d-flex">
-          <button type="button" class="btn btn-category"  v-on:click="showNewCategoryModal">
+          <button type="button" class="btn btn-category"  v-on:click="showNewSubcategoryModal">
             <span class="fas fa-plus"></span> nouvelle categorie
           </button>
         </div>
@@ -33,7 +33,6 @@
                 <th scope="col">#</th>
                 <th scope="col">nome</th>
                 <th scope="col">nombre de produits</th>
-                <th scope="col">operation</th>
               </tr>
             </thead>
             <tbody>
@@ -41,43 +40,68 @@
                 <th scope="row ">{{categorie.id }}</th>
                 <td class="pt-3">{{categorie.name }}</td>
                 <td class="pt-3">Otto</td>
-                <td>
-                    <b-button variant="danger"  @click="delete_categorie(categorie.id)">
-                        <i class="fas fa-trash-alt"></i>
-                    </b-button>
-                    <b-button variant="success" @click="updatecategorie(categorie)"  >
-                        <i class="fas fa-edit"></i>
-                    </b-button>
-                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <div class="row" v-for="(categorie, index) in categories" :key="index">
+      <div class="col-md-12 mt-5 category-table" v-if="categorie.subcategories.length > 0">
+        <h1>{{categorie.name}} has {{categorie.subcategories.length}} {{categorie.subcategories.length > 1 ? 'subCategories' : 'subCategorie'}}</h1>        
+        <table class="table table-striped">
+          <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">nome</th>
+                <th scope="col">nombre de produits</th>
+                <th scope="col">operation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="subcategorie in categorie.subcategories" :key="subcategorie.id">
+              <th scope="row ">{{subcategorie.id}}</th>
+              <td class="pt-3">{{subcategorie.name }}</td>
+              <td class="pt-3" >{{categorie.name}}</td>
+              <td>
+                  <b-button variant="danger"  @click="delete_subcategorie(subcategorie.id)">
+                      <i class="fas fa-trash-alt"></i>
+                  </b-button>
+                  <b-button variant="success" @click="updatesubcategorie(subcategorie)"  >
+                      <i class="fas fa-edit"></i>
+                  </b-button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
     </div>
-     <b-modal  ref="NewCategoryModal" hide-footer title="Ajoute dune nouvelle categories">
+     <b-modal  ref="NewSubcategoryModal" hide-footer title="Ajoute dune nouvelle categories">
         <div class="d-block text-center">
-          <form v-on:submit.prevent="createCategory">
+          <form v-on:submit.prevent="createSubcategory">
             <div class="form-group">
               <label for="name">Entrer le nome</label>
-              <input type="text" v-model="categoryData.name" class="form-control" id="name"  name='name' placeholder="Entrer le nome du categorie">
+              <input type="text" v-model="subcategoryData.name" class="form-control" id="name"  name='name' placeholder="Entrer le nome du categorie">
+              <select v-model="subcategoryData.id_categorie">
+                <option v-for="(categorie, index) in categories" :key="index" v-bind:value="categorie.id">{{categorie.name}}</option>
+              </select>
             </div>
             <hr>
-              <button type="button" class="btn btn-default" v-on:click="hideNewCategoryModal">Exit</button>
-              <button type="submit" class="btn btn-primary" v-on:click="hideNewCategoryModal">Save</button>
+              <button type="button" class="btn btn-default" v-on:click="hideNewSubcategoryModal">Exit</button>
+              <button type="submit" class="btn btn-primary" v-on:click="hideNewSubcategoryModal">Save</button>
           </form>
         </div>
     </b-modal>
-    <b-modal  ref="EditCategoryModal" hide-footer title="Edite categorie">
+    <b-modal  ref="EditSubcategoryModal" hide-footer title="Edite subcategorie">
         <div class="d-block text-center">
-          <form v-on:submit.prevent="updatcategorie">
+          <form v-on:submit.prevent="updatsubcategorie">
             <div class="form-group">
               <label for="name">Entrer le nome</label>
-              <input type="text" v-model="editcategoryData.name" class="form-control" id="name"  name='name' placeholder="Entrer le nome du categorie">
+              <input type="text" v-model="editsubcategoryData.name" class="form-control" id="name"  name='name' placeholder="Entrer le nome du subcategorie">
             </div>
             <hr>
-              <button type="button" class="btn btn-default" v-on:click="hideEditCategoryModal">Exit</button>
-              <button type="submit" class="btn btn-primary" v-on:click="hideEditCategoryModal">MAJ</button>
+              <button type="button" class="btn btn-default" v-on:click="hideEditSubcategoryModal">Exit</button>
+              <button type="submit" class="btn btn-primary" v-on:click="hideEditSubcategoryModal">MAJ</button>
           </form>
         </div>
     </b-modal>
@@ -92,61 +116,65 @@ export default {
 
   data () {
     return {
-      categoryData:{
+      subcategoryData:{
         name: '',
-
+        id_categorie:'',
       },
-        editcategoryData:{
+        editsubcategoryData:{
         name: '',
+        id_categorie:'',
 
       }
     }
   },
      computed:{
         ...mapGetters({
-            categories:'categories/categories',
+            categories:'subcategories/subcategories',
         }),
       
           },
         created(){
-          this.get_categories()
-          console.log(this.get_categories());
-      //  this.$store.dispatch("categories/get_categories");
-     },
+          this.get_categories(),
+          this.get_subcategories()
+       },
+            
   methods: {
       ...mapActions({
           creat_categorie:'categories/creat_categorie',
+          creat_subcategorie:'subcategories/creat_subcategorie',
           get_categories:'categories/get_categories',
-          update_categorie:'categories/update_categorie',
-          delete_categorie:'categories/delete_categorie'
+          get_subcategories:'subcategories/get_subcategories',
+          update_subcategorie:'subcategories/update_subcategorie',
+          delete_subcategorie:'subcategories/delete_subcategorie'
       }),
-    
-    updatecategorie(categorie){
-      this.showEditCategoryModal()
-      this.editcategoryData = categorie;
-      return this.editcategoryData
+     
+      
+    updatesubcategorie(subcategorie){
+      this.showEditSubcategoryModal()
+      this.editsubcategoryData = subcategorie;
+      return this.editsubcategoryData
 
     },
   
-     updatcategorie(){
+     updatsubcategorie(){
       //  console.log(this.editcategoryData)
-         this.update_categorie(this.editcategoryData)
+         this.update_subcategorie(this.editsubcategoryData)
       //  console.log( this.editcategoryData.name)
     },
-    hideNewCategoryModal(){
-        this.$refs.NewCategoryModal.hide()
+    hideNewSubcategoryModal(){
+        this.$refs.NewSubcategoryModal.hide()
     },
-     hideEditCategoryModal(){
-        this.$refs.EditCategoryModal.hide()
+     hideEditSubcategoryModal(){
+        this.$refs.EditSubcategoryModal.hide()
     },
-    showNewCategoryModal(){
-        this.$refs.NewCategoryModal.show()
+    showNewSubcategoryModal(){
+        this.$refs.NewSubcategoryModal.show()
     },
-     showEditCategoryModal(){
-        this.$refs.EditCategoryModal.show()
+     showEditSubcategoryModal(){
+        this.$refs.EditSubcategoryModal.show()
     },
-    createCategory() {
-        this.creat_categorie(this.categoryData)
+    createSubcategory() {
+        this.creat_subcategorie(this.subcategoryData)
     },
    
  

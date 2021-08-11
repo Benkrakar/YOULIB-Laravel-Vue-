@@ -52,7 +52,7 @@ class ProductController extends BaseController
               return $this->sendResponse(new ProductResource($product) ,'Product found successfully' );
 
     }
-    public function updat(Request $request)
+    public function update(Request $request,$id )
     {
       $input = $request->all();
       $validator = Validator::make($input , [
@@ -66,8 +66,8 @@ class ProductController extends BaseController
     if ($validator->fails()) {
       return $this->sendError('Please validate error' ,$validator->errors() );
         }
-      $product->id = $request->$input->id;
-      $product = Product::find($product->id);
+      
+      $product = Product::find($id);
       // $categorie->name = $input['name'];
       // $categorie->save();
       $product->update([
@@ -78,7 +78,7 @@ class ProductController extends BaseController
         'quantite' => $input['quantite'],
         'id_subcategorie' => $input['id_subcategorie'],
       ]);
-      return $this->sendResponse(new ProductResource($product) ,'categories updated successfully' );
+      return $this->sendResponse(new ProductResource($product) ,'product updated successfully' );
 
     }
 
