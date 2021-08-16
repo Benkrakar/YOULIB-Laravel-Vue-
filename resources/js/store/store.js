@@ -5,6 +5,8 @@ import categories from "./modules/tools/categories"
 import subcategories from "./modules/tools/subcategories"
 import products from "./modules/tools/products"
 import profiles from "./modules/tools/profiles"
+import carte from "./modules/tools/carte"
+import commandes from "./modules/tools/commandes"
 
 Vue.use(Vuex);
 
@@ -23,6 +25,8 @@ export default new Vuex.Store({
         products,
         profiles,
         subcategories,
-        auth
+        auth,
+        carte,
+        commandes
     }
 })

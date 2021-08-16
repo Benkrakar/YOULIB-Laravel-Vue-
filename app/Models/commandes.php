@@ -9,8 +9,12 @@ class commandes extends Model
 {
     use HasFactory;
     protected $fillable = [
+        
         'status_commande',
-        'quentite_commande',
-        'product_id',
-       
+        'client_name',
+        'client_email',
+        'client_adresse',
+        'totale',
+        
     ];}
+   

@@ -16,13 +16,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10">
-          <h3>{{categories && categories != undefined && categories.length}}</h3>
-        </div>
         <div class="col-md-2 d-flex">
           <button type="button" class="btn btn-category"  v-on:click="showNewSubcategoryModal">
-            <span class="fas fa-plus"></span> nouvelle categorie
+            <span class="fas fa-plus"></span> nouvelle subcategorie
           </button>
+         
         </div>
       </div>
       <div class="row">
@@ -32,20 +30,134 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">nome</th>
-                <th scope="col">nombre de produits</th>
+                <th scope="col">nombre des subcategories</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(categorie, index) in categories" :key="index">
                 <th scope="row ">{{categorie.id }}</th>
                 <td class="pt-3">{{categorie.name }}</td>
-                <td class="pt-3">Otto</td>
+                <td class="pt-3">{{categorie.subcategories && categorie.subcategories != undefined && categorie.subcategories.length}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <div class="row" v-for="(categorie, index) in categories" :key="index">
+      <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		<div class="col-md-12 mt-5 categories-collaps"> 
+                  <!-- Via multiple directive modifiers -->
+                  <b-button v-b-toggle.collapse-a>{{categories[0].name}}</b-button>
+                   <b-button v-b-toggle="'collapse-b '">{{categories[1].name}}</b-button>
+                   <b-button v-b-toggle="'collapse-c '">{{categories[2].name}}</b-button>
+                  <!-- Elements to collapse -->
+                  <!-- <b-collapse id="collapse-a" class="mt-2"  v-for="subcategorie in categorie.subcategories" :key="subcategorie.id">
+                    <b-card >{{subcategorie.id}}</b-card>
+                    <b-card >{{subcategorie.name}}</b-card>
+                    <b-card >{{categorie.name}}</b-card>
+                  </b-collapse> -->
+                  <b-collapse  id="collapse-a" class="collaps mt-2">
+                    <h2>{{categories[0].subcategories.length > 0 ? '' : 'la liste est vide'}}</h2>
+                      <div >
+                            <table class="table table-striped">
+                        <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">nome</th>
+                            
+                              <th scope="col">operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr   v-for="subcategorie in categories[0].subcategories" :key="subcategorie.id">
+                            <th scope="row ">{{subcategorie.id}}</th>
+                            <td class="pt-3">{{subcategorie.name }}</td>
+                           
+                            <td>
+                                <b-button variant="danger"  @click="delete_subcategorie(subcategorie.id)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </b-button>
+                                <b-button variant="success" @click="updatesubcategorie(subcategorie)"  >
+                                    <i class="fas fa-edit"></i>
+                                </b-button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                  </b-collapse>
+                    <b-collapse id="collapse-b" class="collaps mt-2">
+                      <h2>{{categories[1].subcategories.length > 0 ? '' : 'la liste est vide'}}</h2>
+                      <div >
+                          <table class="table table-striped">
+                        <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">nome</th>
+                            
+                              <th scope="col">operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr  v-for="subcategorie in categories[1].subcategories" :key="subcategorie.id">
+                            <th scope="row ">{{subcategorie.id}}</th>
+                            <td class="pt-3">{{subcategorie.name }}</td>
+                           
+                            <td>
+                                <b-button variant="danger"  @click="delete_subcategorie(subcategorie.id)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </b-button>
+                                <b-button variant="success" @click="updatesubcategorie(subcategorie)"  >
+                                    <i class="fas fa-edit"></i>
+                                </b-button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                  </b-collapse>
+                     
+                    <b-collapse id="collapse-c" class="collaps mt-2">
+                     <h2>{{categories[2].subcategories.length > 0 ? '' : 'la liste est vide'}}</h2>
+                      <div >
+                           <table class="table table-striped">
+                        <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">nome</th>
+                            
+                              <th scope="col">operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr  v-for="subcategorie in categories[2].subcategories" :key="subcategorie.id">
+                            <th scope="row ">{{subcategorie.id}}</th>
+                            <td class="pt-3">{{subcategorie.name }}</td>
+                           
+                            <td>
+                                <b-button variant="danger"  @click="delete_subcategorie(subcategorie.id)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </b-button>
+                                <b-button variant="success" @click="updatesubcategorie(subcategorie)"  >
+                                    <i class="fas fa-edit"></i>
+                                </b-button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                  </b-collapse>
+                </div>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>
+                
+      <!-- <div class="row" v-for="(categorie, index) in categories" :key="index">
       <div class="col-md-12 mt-5 category-table" v-if="categorie.subcategories.length > 0">
         <h1>{{categorie.name}} has {{categorie.subcategories.length}} {{categorie.subcategories.length > 1 ? 'subCategories' : 'subCategorie'}}</h1>        
         <table class="table table-striped">
@@ -74,7 +186,7 @@
           </tbody>
         </table>
       </div>
-      </div>
+      </div> -->
     </div>
      <b-modal  ref="NewSubcategoryModal" hide-footer title="Ajoute dune nouvelle categories">
         <div class="d-block text-center">
@@ -139,13 +251,13 @@ export default {
        },
             
   methods: {
-      ...mapActions({
-          creat_categorie:'categories/creat_categorie',
+    ...mapActions({
+      creat_categorie:'categories/creat_categorie',
           creat_subcategorie:'subcategories/creat_subcategorie',
           get_categories:'categories/get_categories',
           get_subcategories:'subcategories/get_subcategories',
           update_subcategorie:'subcategories/update_subcategorie',
-          delete_subcategorie:'subcategories/delete_subcategorie'
+          delete_subcategorie:'subcategories/delete_subcategorie',
       }),
      
       

@@ -27,11 +27,11 @@ class UsersController extends BaseController
               }
               return $this->sendResponse(new UsersResource($user) ,'User found successfully' );
     }
-    public function update(Request $request, User $user)
+    public function update(Request  $request,$id)
     {
         $input = $request->all();
         $validator = Validator::make($input , [
-            // 'password' =>'required',
+            'name' =>'required',
             // 'c_password' =>'required|same:password',
             // 'image' =>'image|mimes:jpeg,png,jpg,gif,svg',
 
@@ -39,22 +39,22 @@ class UsersController extends BaseController
         if ($image = $request->file('image')) {
 
           $path = $request->file('image')->store('user');
+          $input['image'] =$path;
        }
       if ($validator->fails()) {
         return $this->sendError('Please validate error' ,$validator->errors() );
           }
-          $input['password'] = Hash::make($input['password']);
-          // $user->name = $input['name'];
-          // $user->email = $input['email'];
-          // $user->password = $input['password'];
-          // $user->phone= $input['phone'];
-          // $user->ville= $input['ville'];
-          // $user->quartier= $input['quartier'];
-          // $user->code_postale= $input['code_postale'];
-          // $user->image= $input['image'];
-          // $user->save();
+      
+          $user = User::find($id);
+         
           $user->update([
-            'name' => $input['name']
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'phone' => $input['phone'],
+            'ville' => $input['ville'],
+            'quartier' => $input['quartier'],
+            'code_postale' => $input['code_postale'],
+            'image' => $input['image'],
           ]);
     return $this->sendResponse(new UsersResource($user) ,'User updated successfully' );
 

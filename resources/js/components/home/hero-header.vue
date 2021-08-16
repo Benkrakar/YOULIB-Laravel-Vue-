@@ -27,7 +27,13 @@
                                 >
                                 <div class="carte-header-details fadeIn-bottom">
                                     <div class="desc row justify-content-center">
-                                    <button class="">Consulter</button>
+                                    <button class="">   <router-link
+                              to="/all/1"
+                              exact
+                            
+                            >
+               Consulter
+                  </router-link></button>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +46,13 @@
                                 :src="require('../../../images/cahier.jpg').default" >
                                 <div class="carte-header-details fadeIn-bottom">
                                     <div class="desc row justify-content-center">
-                                    <button class="">Consulter</button>
+                                    <button class=""><router-link
+                              to="/all/2"
+                              exact
+                            
+                            >
+               Consulter
+                  </router-link></button>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +65,13 @@
                                     :src="require('../../../images/téléchargement.jpg').default" >
                                 <div class="carte-header-details fadeIn-bottom">
                                     <div class="desc row justify-content-center">
-                                    <button class="">Consulter</button>
+                                    <button class=""><router-link
+                              to="/all/3"
+                              exact
+                            
+                            >
+               Consulter
+                  </router-link></button>
                                     </div>
                                 </div>
                             </div>

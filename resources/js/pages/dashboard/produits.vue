@@ -80,13 +80,14 @@
         <div class="d-block text-center">
           <form v-on:submit.prevent="oop">
             <div class="form-group">
-              <label for="name">Entrer le nome</label>
              <input type="text" v-model="editproductsData.name" class="form-control" id="name"  name='name' placeholder="Entrer le nome du produite">
               <input type="text" v-model="editproductsData.details" class="form-control" id="details"  name='details' placeholder="Entrer le nome du produite">
               <input type="text" v-model="editproductsData.price" class="form-control" id="price"  name='price' placeholder="price">
               <input type="file" class="form-control" v-on:change="setimageedit" ref="imageProduct" id="image" name="image" autocomplete="image"> 
               <input type="text" v-model="editproductsData.quantite" class="form-control" id="quantite"  name='quantite' placeholder="Q">
-              <input type="text" v-model="editproductsData.id_subcategorie" class="form-control" id="id_subcategorie"  name='id_subcategorie' placeholder="SUB">
+                <select v-model="editproductsData.id_subcategorie" placeholder="subcategorie">
+                <option v-for="(subcategorie, index) in subcategories" :key="index" v-bind:value="subcategorie.id">{{subcategorie.name}}</option>
+              </select>
             </div>
             <hr>
               <button type="button" class="btn btn-default" v-on:click="hideEditProductModal">Exit</button>
@@ -131,9 +132,7 @@ export default {
             products:'products/products',
             subcategories:'subcategories/subcategorie',
         }),
-        computed(){
-          // products:this.$store.getters['products/get_products']
-        }
+       
      },
      created(){
        this.get_products(),
@@ -172,7 +171,7 @@ export default {
         fd.append('quantite',this.editproductsData.quantite)
         fd.append('id_subcategorie',this.editproductsData.id_subcategorie)
         fd.append('_method','put')
-       
+       console.log(this.editproductsData.id)
         this.update_products(fd)
       
       },

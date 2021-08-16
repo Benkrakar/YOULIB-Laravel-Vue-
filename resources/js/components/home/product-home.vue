@@ -8,7 +8,7 @@
           </div>
           <div class="row">
                
-                    <div class="cartes_shop col-lg-3 col-sm-6 " v-for="(product, index) in products.slice(-4)" :key="index">
+                    <div class="cartes_shop col-lg-3 col-sm-6 " v-for="(product, index) in products.slice(-8)" :key="index">
                         <div class="content_shop">
                             <div class="content-overlay"></div>
                            <img class="content-image" :src="`${$store.state.serverpath}/storage/${product.image}`" alt="">
@@ -20,7 +20,7 @@
                                     <i class="fas fa-shopping-cart fa-2x"></i>
                                 </a>
                                 <a class="m-2" href="#">
-                                    <i class="fas fa-eye fa-2x"></i>
+                                 <router-link :to="{ name:'single', params:{id:product.id}}">  <i class="fas fa-eye fa-2x"></i></router-link>
                                 </a>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import {mapGetters,  mapActions } from 'vuex';
+import {mapGetters,  mapActions,mapMutations } from 'vuex';
 
 export default {
   name :'products',
@@ -54,10 +54,13 @@ export default {
   methods: {
       ...mapActions({
           get_products:'products/get_products',
-          ADD_TO_CART:'products/ADD_TO_CART',
+         
       }),
 
-   
+     ...mapMutations({
+          ADD_TO_CART:'products/ADD_TO_CART',
+ 
+      }),
   }
 };
 </script>

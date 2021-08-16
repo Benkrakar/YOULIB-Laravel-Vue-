@@ -1,54 +1,81 @@
 <template>
-    <div>
-        <div class="row">
-                    <div class="col-md-12">
-                        <div class="cv-last-order">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Product name</th>
-                                        <th>unit price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Plastic face shield
-                                        </td>
-                                        <td>$165</td>
-                                        <td>3</td>
-                                        <td>$495</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Hand gloves
-                                        </td>
-                                        <td>$65</td>
-                                        <td>5</td>
-                                        <td>$325</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Oxygen mask
-                                        </td>
-                                        <td>$65</td>
-                                        <td>2</td>
-                                        <td>$130</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" class="cv-d-none"></td>
-                                        <td><b>Grand Total</b></td>
-                                        <td class="cv-price">$975</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="cv-cart-btn d-flex justify-content-center">
-                            <a href="javascript:;" class="cv-btn">place order</a>
-                        </div>
-                    </div>
-                </div>
-    </div>
+  <tbody>
+    <tr  v-for="product in cart" :key="product.id" >
+      <td>
+        {{ product.name }}
+      </td>
+      <td>{{ product.price }}$</td>
+      <td>{{ product.quantity  }}</td>
+      <td>{{ product.price *  product.quantity }}</td>
+      
+    </tr>
+  </tbody>
 </template>
+
+
+<script>
+import {mapActions  ,mapGetters} from 'vuex';
+
+export default {
+     data : ()=>{
+    return {
+     CommandeData:{
+        id_product:'',
+        quentitie:'',
+      id_commande:1
+      },
+     totale:''
+    }
+    },
+      computed:{
+           ...mapGetters({
+            cart:'carte/cart',
+        }),
+
+        },
+  created(){
+      this.totalPrice()
+     this.send()
+  
+     
+
+  },
+        methods: {
+            ...mapActions({
+      creat_commande_products:'commandes/creat_commande_products',
+      }),
+       totalPrice(){
+           let total = 0;
+
+        for (let item of this.cart) {
+            total += item.price*item.quantity;
+        }
+            this.totale = total;
+      },
+      send(product){
+        // if(product){
+        
+        //         console.log(product)
+        // this.CommandeData.id_product=product.id;
+        // this.CommandeData.quentitie=product.quantity;
+
+        //  this.creat_commande_products(this.CommandeData)
+        // // return this.CommandeData
+        // }
+      },
+      showNewCommandeModal(product){
+     
+      }
+      },
+   
+       
+
+
+  
+   
+       
+    }
+
+</script>
+
+<style lang="css"></style>

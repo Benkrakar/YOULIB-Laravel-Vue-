@@ -16,8 +16,10 @@ class CreateCommandes extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->boolean('status_commande')->default(false);
-            $table->integer('quentite_commande');
-            $table->integer('product_id');
+            $table->string('client_name');
+            $table->string('client_email');
+            $table->string('client_adresse');
+            $table->integer('totale');
             $table->timestamps();
         });
     }

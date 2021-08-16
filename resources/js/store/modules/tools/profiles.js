@@ -51,11 +51,12 @@ export default {
                 commit("DELETE_PROFILES", id);
         },
         async update_profiles({ commit },data){
-                let response = await axios.put(`/users/${data.id}`,{headers:{
+                let response = await axios.post(`/users/${data.id}`,data,{headers:{
+                "Content-Type": "multipart/form-data",
                 Authorization: "Bearer " + localStorage.getItem("token")
                 }});
               
-                commit("UPDATE_PROFILES",data );
+                commit("UPDATE_PROFILES",response.data.data.data);
                 console.log(data)
                
         },

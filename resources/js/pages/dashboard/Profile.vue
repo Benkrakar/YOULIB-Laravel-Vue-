@@ -68,7 +68,8 @@
               <input type="text" v-model="editprofilesData.name" class="form-control" id="name"  name='name' placeholder="name">
               <input type="number" v-model="editprofilesData.phone" class="form-control" id="phone"  name='phone' placeholder="phone">
               <input type="email" v-model="editprofilesData.email" class="form-control" id="email"  name='email' placeholder="email">
-              <input type="file" class="form-control" v-on:change="setimage" ref="editimageProfile" id="image" name="image" required autocomplete="image"> 
+              <input type="number" v-model="editprofilesData.code_postale" class="form-control" id="code_postale"  name='code_postale' placeholder="code_postale">
+              <input type="file" class="form-control" v-on:change="setimageedit" ref="editimageProfile" id="image" name="image"  autocomplete="image"> 
              <select v-model="editprofilesData.role" id="role"  name='role'>
               <option disabled value="">role</option>
               <option>client</option>
@@ -100,6 +101,7 @@ export default {
         role:'',
         ville:'',
         quartier:'',
+        code_postale:''
       }
     }
   },
@@ -128,21 +130,19 @@ export default {
      this.editprofilesData = profile
     return this.editprofilesData;
     },
-       oop(editprofilesData){
-         console.log('image',editprofilesData)
-         const fd = new FormData()
-         fd.id = this.editprofilesData.id
+       oop(){
+        const fd = new FormData()
+        fd.id = this.editprofilesData.id
         fd.append('image',this.editprofilesData.image)
         fd.append('name',this.editprofilesData.name)
         fd.append('phone',this.editprofilesData.phone)
         fd.append('email',this.editprofilesData.email)
+        fd.append('code_postale',this.editprofilesData.code_postale)
         fd.append('role',this.editprofilesData.role)
         fd.append('ville',this.editprofilesData.ville)
         fd.append('quartier',this.editprofilesData.quartier)
-        const response = axios.put(`/users/${ fd.id}`,fd,{headers:{
-                Authorization: "Bearer " + localStorage.getItem("token")
-                }});
-        console.log('ezaf')
+        fd.append('_method','put')
+       this.update_profiles(fd)
       },
      hideEditProfileModal(){
         this.$refs.EditProfileModal.hide()

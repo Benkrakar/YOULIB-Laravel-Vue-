@@ -14,20 +14,22 @@ class CommandesController extends BaseController
     public function index()
     {
         $commandes = commandes::all();
-        return $this->sendResponse(CommandesResource::collection($commandes),
+        return $this->sendResponse(($commandes),
         'All commands sent');
     }
     public function store(Request $request)
     {
         $input = $request->all();
         $validator = Validator::make($input , [
-            'quentite_commande'=> 'required|integer',
+            'client_adresse'=> 'required|string',
+            'client_email'=> 'required|string',
+            'client_name'=> 'required|string',
            ]  );
            if ($validator->fails()) {
             return $this->sendError('Please validate error' ,$validator->errors() );
               }
         $commandes = commandes::create($input);
-        return $this->sendResponse(new CommandesResource($commandes) ,'Commande created successfully' );
+        return $this->sendResponse(($commandes) ,'Commande created successfully' );
     
     }
 
@@ -52,10 +54,15 @@ class CommandesController extends BaseController
            if ($validator->fails()) {
             return $this->sendError('Please validate error' ,$validator->errors() );
               }
-              $commande->quentite_commande = $input['quentite_commande'];
-              $commande->product_id = $input['product_id'];
-              $commande->save();
-              return $this->sendResponse(new commandesResource($commande) ,'commande updated successfully' );
+              $commande = commande::find($id);
+              $commande->update([
+                'client_name' => $input['client_name'],
+                'client_email' => $input['client_email'],
+                'client_adresse' => $input['client_adresse'],
+              
+                ]);
+          
+              return $this->sendResponse($commande ,'commandes products updated successfully' );
 
                 }
 

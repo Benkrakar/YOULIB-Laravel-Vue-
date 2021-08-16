@@ -30,10 +30,9 @@
             <button type="button"  v-b-toggle.sidebar-right class="btn btn-link d-block d-md-none">
               <i class="fas fa-bars"></i>
             </button>
-            <a class="navbar-brand pt-3" href="#">
-              <h4 class="font-weight-bold">YOULIB</h4>
-            </a>
-        
+             <router-link to="/home" class="navbar-brand pt-3" exact>
+                <h4 class="font-weight-bold">YOULIB</h4>
+              </router-link>
             <ul class="navbar-nav ml-auto d-block d-md-none">
               <li class="nav-item">
                 <a class="btn btn-link" href="#"><i class="fas fa-shopping-cart "></i> <span class="badge badge-danger">3</span></a>
@@ -48,20 +47,14 @@
         
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="btn btn-link" href="#"><i class="fas fa-shopping-cart"></i><span class="badge badge-danger">3</span></a>
-                  <a class="btn btn-link" href="#"><i class="fas fa-heart"></i><span class="badge badge-danger">3</span></a>
+                    <router-link
+                              to="/cart"
+                              exact
+                            >
+                 <i class="fas fa-shopping-cart fa-2x"></i><span class="badge badge-danger">{{cart}}</span>
+                  </router-link>
     
                 </li>
-                 <router-link
-                  to="/dashboard"
-                  active-class="active d-flex justify-content-around"
-                  tag="button"
-                  exact
-                >
-        <div>
-          <i class="fas fa-tachometer-alt "></i>
-        </div>
-      </router-link>
               </ul>
             </div>
         
@@ -73,25 +66,37 @@
             <div class="collapse navbar-collapse" id="navbar">
               <ul class="navbar-nav  mx-auto">
                 <li class="nav-item ">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <router-link
+                              to="/home"
+                              exact
+                              class="nav-link "
+                            >
+               home
+                  </router-link>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#">Products</a>
+                 
+                    <router-link
+                              to="/all/"
+                              exact
+                              class="nav-link "
+                            >
+               Products
+                  </router-link>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Schools</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Publishers</a>
-                </li>
+               
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Support
+                                    categories
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Delivery Information</a>
-                    <a class="dropdown-item" href="#">Privacy Policy</a>
-                    <a class="dropdown-item" href="#">Terms & Conditions</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                    <!-- <a class="dropdown-item" href="#">{{subcategorie.name}}</a> -->
+                    <ul v-for="(subcategorie, index) in subcategories" :key="index">
+                    
+                    <a class="dropdown-item" href="#">{{subcategorie.name}}</a>
+
+                     
+                    </ul>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -172,3 +177,36 @@
     </section>
   </div>
 </template>
+
+
+<script>
+import {mapMutations ,  mapActions ,mapGetters} from 'vuex';
+
+export default {
+   data : ()=>{
+    return {
+      cartCount : 1,
+     
+    }
+    },
+       computed:{
+         ...mapGetters({
+            cart:'products/cartCount',
+              subcategories:'subcategories/subcategorie',
+        }),
+        },
+           created(){
+       
+        this.get_subcategorie()
+        // console.log(this.subcategories)
+     },
+        methods:{
+           ...mapActions({
+           get_subcategorie:'subcategories/get_subcategorie',
+      }),
+
+
+        }
+
+};
+</script>

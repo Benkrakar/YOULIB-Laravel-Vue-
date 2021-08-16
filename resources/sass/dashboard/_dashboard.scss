@@ -119,3 +119,57 @@
 		cursor: pointer;
 	}
 }
+.categories-collaps{
+	width: 100%;
+	
+	
+	button{
+
+		margin:0 22px 0 22px;
+	}
+	.collaps{
+		display:block;
+	}
+}
+.table-products{
+
+		.othman{
+			background-color:white !important;
+		}
+		.walid{
+			background-color:white !important;
+		}
+	
+}
+.paginations{
+	padding-top:7em !important;
+}
+.pagination-item,
+.pagination-navigation,
+.pagination-more {
+	display: flex;
+    height:  2.2rem;
+	width:30em;
+	margin: .3rem;
+    font-size:15px;
+    color: $primary;
+    font-weight: 700;
+}
+
+.pagination {
+   
+    border-radius: 4px;
+    transition-property: opacity, color, background-color;
+    transition-duration: 160ms;
+    transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+
+   
+    &.active {
+        color: $secondary;
+        background-color: $primary;
+    }
+    
+   
+   
+}

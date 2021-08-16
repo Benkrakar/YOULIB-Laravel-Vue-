@@ -14,13 +14,19 @@ class ProductController extends BaseController
     public function index()
     {
         $product = Product::all();
-        return $this->sendResponse(ProductResource::collection($product),
+        return $this->sendResponse($product,
+          'All products sent');
+    }
+    public function paginateProduct()
+    {
+        $product = Product::paginate(4);
+        return $this->sendResponse($product,
           'All products sent');
     }
     public function subcategorie($id)
     {
     $product = Product::where('id_subcategorie' , $id)->get();
-    return $this->sendResponse(ProductResource::collection($product), 'Product retrieved Successfully!' );
+    return $this->sendResponse($product, 'Product retrieved Successfully!' );
     }
     public function store(Request $request)
     {
@@ -45,18 +51,24 @@ class ProductController extends BaseController
     }
     public function show($id)
     {
+
         $product = Product::find($id);
         if ( is_null($product) ) {
             return $this->sendError('Product not found'  );
               }
-              return $this->sendResponse(new ProductResource($product) ,'Product found successfully' );
-
+              return $this->sendResponse($product ,'Product found successfully' );
+    }
+    public function salah(Request $request){
+      // return $request->ids;
+       $product = Product::whereIn('id', $request->ids)
+      ->get();
+      return $this->sendResponse(($product) ,'Product found successfully' );
     }
     public function update(Request $request,$id )
     {
       $input = $request->all();
       $validator = Validator::make($input , [
-       'name'=> 'required',
+      
       ]  );
       if ($image = $request->file('image')) {
 
@@ -66,17 +78,9 @@ class ProductController extends BaseController
     if ($validator->fails()) {
       return $this->sendError('Please validate error' ,$validator->errors() );
         }
-      
       $product = Product::find($id);
-      // $categorie->name = $input['name'];
-      // $categorie->save();
       $product->update([
-        'name' => $input['name'],
-        'image' =>  $input['image'],
-        'details' => $input['details'],
-        'price' => $input['price'],
         'quantite' => $input['quantite'],
-        'id_subcategorie' => $input['id_subcategorie'],
       ]);
       return $this->sendResponse(new ProductResource($product) ,'product updated successfully' );
 

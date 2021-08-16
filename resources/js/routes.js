@@ -2,6 +2,7 @@ import home from './pages/public/home.vue'
 import cart from './pages/public/cart.vue'
 import checkout from './pages/public/checkout.vue'
 import allproduct from './pages/public/allproduct.vue'
+import singleproduct from './pages/public/singleproduct.vue'
 import login from './pages/auth/login.vue'
 import register from './pages/auth/RegisterForm.vue'
 import dashboard from './pages/dashboard/dashboard.vue'
@@ -23,13 +24,25 @@ const routes = [
     },
     {
         path: '/checkout',
+        name:'checkout',
         component: checkout
     },
   
     {
-        path: '/all',
+        path: '/all' ,
+        name: 'all',
         component: allproduct
     },
+    {
+      path: '/all/:id' ,
+      name: 'allwithsubcategorie',
+      component: allproduct
+  },
+    {
+      path: '/single/:id',
+      name:'single',
+      component: singleproduct
+  },
     {
         path: '/login',
         name: 'login',
@@ -45,7 +58,8 @@ const routes = [
         path: '/dashboard',
         component: dashboard,
         beforeEnter:(to,from,next) => {
-          if (!store.getters['auth/authenticated'] && store.getters['auth/user'].role == 'client') {
+          // && !store.getters['auth/user'].role == 'admin')  
+          if (!store.getters['auth/authenticated']  && store.getters['auth/user'].role == 'admin'){
             return next({
               name:'login'
             })

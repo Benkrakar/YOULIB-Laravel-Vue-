@@ -19,8 +19,11 @@ class commandes extends JsonResource
         return [
             'id'=> $this->id,
             'status_commande'=>$this->status_commande,
-            'quentite_commande'=>$this->quentite_commande,
-            'product_id'=>$this->product_id,
+            'quentite'=>$this->quentite,
+            'products'=>$this->products,
+            'client_name'=>$this->client_name,
+            'client_email'=>$this->client_email,
+            'client_adresse'=>$this->client_adresse,
             'created_at'=> $this->created_at->format('d/m/Y'),
             'updated_at'=> $this->updated_at->format('d/m/Y'),
         ];

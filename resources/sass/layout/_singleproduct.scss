@@ -1,7 +1,21 @@
-.bootdey{
+.singleproduct{
+    .product{
+    box-shadow: 1px 1px 1px 1px $secondary;
 
-
-    .card-img{
-        width: 75%;
     }
+    .cv-btn{
+        width: 15em;
+        height: 3em;
+        margin-top:6em !important;
+    }
+    
+    .productImg{
+        display: flex;
+        justify-content: flex-end;
+        img{
+            width: 20em !important;
+            height: 30em !important;
+        }
+    }
+    
 }

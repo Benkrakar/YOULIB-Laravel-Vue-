@@ -9,6 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'name',
         'image',
         'details',
@@ -22,5 +23,8 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\subcategories' );
     }
-  
+    protected $casts = [
+        'created_at' => 'datetime:d/m/Y',
+        'updated_at' => 'datetime:d/m/Y',
+    ];
 }
