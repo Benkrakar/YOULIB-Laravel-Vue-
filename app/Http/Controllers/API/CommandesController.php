@@ -14,8 +14,14 @@ class CommandesController extends BaseController
     public function index()
     {
         $commandes = commandes::all();
-        return $this->sendResponse(($commandes),
+        return $this->sendResponse(CommandesResource::collection($commandes),
         'All commands sent');
+    }
+    public function paginateCommandes()
+    {
+        $commandes = commandes::paginate(5);
+        return $this->sendResponse($commandes,
+          'All products sent');
     }
     public function store(Request $request)
     {
@@ -65,6 +71,18 @@ class CommandesController extends BaseController
               return $this->sendResponse($commande ,'commandes products updated successfully' );
 
                 }
+                public function updatestatus(Request $request, commandes $commande)
+                {
+                    $input = $request->all();
+                   
+                          $commande = commande::find($id);
+                          $commande->update([
+                            'status_commande' => $input['status_commande'],
+                            ]);
+                      
+                          return $this->sendResponse($commande ,'commandes products updated successfully' );
+            
+                            }
 
     public function destroy(commandes $commande)
     {

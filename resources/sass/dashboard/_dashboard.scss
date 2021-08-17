@@ -168,8 +168,17 @@
     &.active {
         color: $secondary;
         background-color: $primary;
-    }
-    
-   
-   
+    }  
+}
+.modalDashboard{
+	display:flex;
+	justify-content:center !important;
+	form{
+		width:70% !important;
+	}
+	input{
+		margin:2em auto !important;
+
+	}
+	
 }

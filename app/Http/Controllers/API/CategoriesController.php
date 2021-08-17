@@ -15,7 +15,7 @@ class CategoriesController extends BaseController
     public function index()
     {
         $categories = categorie::orderBy('id','desc')->get();
-        return $this->sendResponse(categoriesResource::collection($categories),
+        return $this->sendResponse(($categories),
           'All categories sent');
     }
     

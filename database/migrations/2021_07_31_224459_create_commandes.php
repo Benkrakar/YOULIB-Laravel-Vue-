@@ -18,6 +18,7 @@ class CreateCommandes extends Migration
             $table->boolean('status_commande')->default(false);
             $table->string('client_name');
             $table->string('client_email');
+            $table->string('client_phone');
             $table->string('client_adresse');
             $table->integer('totale');
             $table->timestamps();

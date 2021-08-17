@@ -24,17 +24,13 @@
                     </tr>
                   </thead>
 
-                  <Checkout
-                    
-                  
-                    
-                  />
+                  <Checkout />
                 </table>
               </div>
               <div class="cv-cart-btn d-flex justify-content-center mt-5">
-              <button type="button" class="cv-btn" v-on:click="commander" >
-            <span class="fas fa-check-square mr-3"></span>commander
-          </button>
+                <button type="button" class="cv-btn" v-on:click="commander">
+                  <span class="fas fa-check-square mr-3"></span>commander
+                </button>
               </div>
             </div>
           </div>
@@ -54,20 +50,20 @@ import { mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   data: () => {
     return {
-     CommandeData:{
-        product_name:'',
-        product_price:'',
-        quentitie:'',
-      id_commande:''
+      CommandeData: {
+        product_name: "",
+        product_price: "",
+        quentitie: "",
+        id_commande: "",
       },
 
-        ids:[],
-        quantity:[],
+      ids: [],
+      quantity: [],
       carProducts: [],
       totale: "",
     };
   },
-  
+
   components: {
     Checkout,
     Profile,
@@ -88,44 +84,53 @@ export default {
     inc() {},
   },
   created() {
-    this.loop()
-    this.commandeinfo()
-   
+    this.loop();
+    this.commandeinfo();
   },
   methods: {
-        ...mapActions({
-      creat_commande:'commandes/creat_commande',
-      creat_commande_products:'commandes/creat_commande_products',
-        
-      }),
-    
-       loop(){
-            for (let index = 0; index < this.cart.length; index++) {
-                this.ids.push(this.cart[index].id)
-            }
-             return  this.ids
-        },
-        commandeinfo(){
-            let commande= window.localStorage.getItem('commande') 
-            commande = JSON.parse(commande)
-             this.CommandeData.id_commande= commande.id;
-            console.log( this.CommandeData.id_commande)
-             return  this.CommandeData.id_commande
-        },
-          commander(){
-             for (let index = 0; index < this.cart.length; index++) {
-                this.ids.push(this.cart[index].id)
-                        console.log(this.cart[index].name)
-        this.CommandeData.product_name=this.cart[index].name;
-        this.CommandeData.product_price=this.cart[index].price;
-        this.CommandeData.quentitie=this.cart[index].quantity;
+    ...mapActions({
+      creat_commande: "commandes/creat_commande",
+      creat_commande_products: "commandes/creat_commande_products",
+    }),
 
-         this.creat_commande_products(this.CommandeData)
-            }
-            
-        },
+    loop() {
+      for (let index = 0; index < this.cart.length; index++) {
+        this.ids.push(this.cart[index].id);
+      }
+      return this.ids;
+    },
+    commandeinfo() {
+      let commande = window.localStorage.getItem("commande");
+      commande = JSON.parse(commande);
+      this.CommandeData.id_commande = commande.id;
+      console.log(this.CommandeData.id_commande);
+      return this.CommandeData.id_commande;
+    },
+    commander() {
+      for (let index = 0; index < this.cart.length; index++) {
+        this.ids.push(this.cart[index].id);
+        console.log(this.cart[index].name);
+        this.CommandeData.product_name = this.cart[index].name;
+        this.CommandeData.product_price = this.cart[index].price;
+        this.CommandeData.quentitie = this.cart[index].quantity;
+
+        this.creat_commande_products(this.CommandeData);
+        this.removeCommande();
+        this.$swal({
+          title: "La commande est bien recu",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        }).then(() => {
+          window.location = "/home";
+        });
+      }
+    },
     ...mapMutations({
-      removeItem: "carte/removeItem",
+      removeCommande: "commandes/removeCommande",
     }),
   },
 };

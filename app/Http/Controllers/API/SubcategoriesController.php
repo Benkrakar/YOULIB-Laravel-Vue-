@@ -16,6 +16,12 @@ class SubcategoriesController extends BaseController
         return $this->sendResponse(subcategoriesResource::collection($subcategories),
           'All subcategories sent');
     }
+    public function paginatesubcategories()
+    {
+        $subcategories = subcategories::paginate(8);
+        return $this->sendResponse(subcategoriesResource::collection($subcategories),
+          'All subcategories sent');
+    }
     public function store(Request $request)
     {
         $input = $request->all();

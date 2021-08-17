@@ -1,24 +1,23 @@
 <template>
-    <div class="dashboard">
-        <Sidebar/>
-        <div class="content">
-            <router-view/>
-        </div>
+  <div class="dashboard">
+    <Sidebar />
+
+    <div class="content">
+      <router-view />
     </div>
+  </div>
 </template>
 
 <script>
-import Sidebar from '../../components/dashboard/Sidebar.vue'
+import Sidebar from "../../components/dashboard/Sidebar.vue";
 export default {
+  name: "home",
 
-    name: 'home',
-
-    components: {
-        Sidebar
-    }
-}
+  components: {
+    Sidebar,
+  },
+};
 </script>
 
 <style>
-
 </style>

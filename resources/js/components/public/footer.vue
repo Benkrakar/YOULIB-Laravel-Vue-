@@ -21,29 +21,20 @@
               <ul>
                 >
                 <li v-for="(categorie, index) in categories" :key="index">
-                  <a href="#">{{ categorie.name }}</a>
+                  <router-link to="/all/" exact>
+                    {{ categorie.name }}
+                  </router-link>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-lg-2 col-md-6">
-            <div class="cv-foot-box cv-foot-links">
-              <h2>Usefull links</h2>
-              <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Statements</a></li>
-                <li><a href="#">Faq</a></li>
-              </ul>
-            </div>
-          </div>
+          <div class="col-lg-2 col-md-6"></div>
           <div class="col-lg-4 col-md-6">
             <div class="cv-foot-box pl-4 cv-foot-contact text-lg-left col-10">
               <h2 class="d-flex justify-content-center">Contact</h2>
               <p><span>Contact : </span>+55 456-789-9651</p>
-              <p><span>Email : </span>example@medical.com</p>
-              <p><span>Address : </span>785 LNCT block street, USA</p>
+              <p><span>Email : </span>example@exemple.com</p>
+              <p><span>Address : </span>youssoufia, maroc</p>
               <ul class="cv-foot-social">
                 <li>
                   <a href="#">

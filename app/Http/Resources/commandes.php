@@ -24,6 +24,7 @@ class commandes extends JsonResource
             'client_name'=>$this->client_name,
             'client_email'=>$this->client_email,
             'client_adresse'=>$this->client_adresse,
+            'client_phone'=>$this->client_phone,
             'created_at'=> $this->created_at->format('d/m/Y'),
             'updated_at'=> $this->updated_at->format('d/m/Y'),
         ];

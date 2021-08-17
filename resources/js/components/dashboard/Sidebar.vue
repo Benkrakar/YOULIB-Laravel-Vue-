@@ -55,6 +55,18 @@
         </div>
         <div class="link-container pt-1">Commandes</div>
       </router-link>
+       <router-link
+        to="/dashboard/messages"
+        active-class="active  d-flex justify-content-around"
+        tag="button"
+        exact
+        class="side-btn"
+      >
+        <div>
+         <i class="fas fa-envelope fa-2x"></i>
+        </div>
+        <div class="link-container pt-1">Messages</div>
+      </router-link>
       <router-link
         to="/dashboard/profile"
         active-class="active  d-flex justify-content-around"

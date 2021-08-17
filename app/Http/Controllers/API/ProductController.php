@@ -23,6 +23,12 @@ class ProductController extends BaseController
         return $this->sendResponse($product,
           'All products sent');
     }
+    public function paginateProductDash()
+    {
+        $product = Product::paginate(12);
+        return $this->sendResponse($product,
+          'All products sent');
+    }
     public function subcategorie($id)
     {
     $product = Product::where('id_subcategorie' , $id)->get();

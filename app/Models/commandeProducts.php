@@ -14,6 +14,7 @@ class commandeProducts extends Model
         'product_price',
         'quentitie',
         'id_commande',
+        'status_commande',
     ];
     public function commande()
     {
