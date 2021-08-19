@@ -61,6 +61,7 @@ export default {
             });
             commit("GET_COMMANDE", response.data.data);
         },
+        
         async get_commandes_paginated({ commit }, page) {
             let response = await axios.get("/commandepaginated?page=" + page, {
                 headers: {
@@ -70,11 +71,7 @@ export default {
             commit("GET_COMMANDE", response.data.data);
         },
         async creat_commande({ commit }, credentials) {
-            let response = await axios.post("/commande", credentials, {
-                headers: {
-                    Authorization: "Bearer " + localStorage.getItem("token")
-                }
-            });
+            let response = await axios.post("/postcommande", credentials);
             commit("SET_COMMANDE", response.data.data);
             // console.log(credentials.data)
         },

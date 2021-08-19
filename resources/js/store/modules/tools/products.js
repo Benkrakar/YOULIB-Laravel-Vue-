@@ -145,6 +145,11 @@ export default {
             });
 
             commit("UPDATE_PRODUCTS", response.data.data);
+        },
+        async update_qttproducts({ commit }, data) {
+            let response = await axios.post(`/qqproduct/${data.id}`, data);
+
+            commit("UPDATE_PRODUCTS", response.data.data);
         }
     }
 };

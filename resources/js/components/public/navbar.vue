@@ -7,7 +7,7 @@
             <div class="col-12 col-md-6">
               <p class="small">
                 <i class="far fa-envelope"></i> logo@example.com |
-                <i class="pl-1 fas fa-phone-alt"></i> +91-9876543210
+                <i class="pl-1 fas fa-phone-alt"></i>066543210
               </p>
             </div>
             <div class="nav-social pr-5">
@@ -158,9 +158,7 @@
               <div class="container">
                 <div class="row justify-content-around">
                   <div class="d-flex col-10 pl-0">
-                    <a class="btn btn-login" href="#"
-                      ><i class="fas fa-user"></i> Log In</a
-                    >
+                   
                   </div>
                   <div class="col-2 text-left">
                     <button
@@ -177,41 +175,49 @@
 
             <ul class="list-unstyled components links">
               <li class="nav-link">
-                <a href="#"><i class="bx bx-home mr-3"></i> Home</a>
+              <router-link to="/home" exact class="nav-link">
+                  home
+                </router-link>
               </li>
               <li class="nav-link">
-                <a href="#"><i class="bx bx-carousel mr-3"></i> Products</a>
+                <router-link to="/all/" exact class="nav-link">
+                  Products
+                </router-link>
               </li>
               <li class="nav-link">
-                <a href="#"><i class="bx bx-book-open mr-3"></i> Schools</a>
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <!-- <a class="dropdown-item" href="#">{{subcategorie.name}}</a> -->
+                  <ul
+                    v-for="(subcategorie, index) in subcategories"
+                    :key="index"
+                  >
+                    <router-link to="/all" exact class="dropdown-item">
+                      {{ subcategorie.name }}
+                    </router-link>
+                  </ul>
+                </div>
               </li>
               <li class="nav-link">
                 <a href="#"><i class="bx bx-crown mr-3"></i> Publishers</a>
               </li>
               <li class="nav-link">
-                <a
-                  href="#pageSubmenu"
-                  data-toggle="collapse"
-                  aria-expanded="false"
-                  class="dropdown-toggle"
-                >
-                  Support</a
-                >
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                  <li>
-                    <a href="#">Delivery Information</a>
-                  </li>
-                  <li>
-                    <a href="#">Privacy Policy</a>
-                  </li>
-                  <li>
-                    <a href="#">Terms & Conditions</a>
-                  </li>
-                </ul>
+               <router-link to="/contact" exact class="nav-link">
+                  Contact
+                </router-link>
+               
               </li>
-              <li>
-                <a href="#"><i class="bx bx-phone mr-3"></i> Contact</a>
-              </li>
+             
             </ul>
           </nav>
         </div>

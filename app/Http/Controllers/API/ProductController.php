@@ -64,12 +64,7 @@ class ProductController extends BaseController
               }
               return $this->sendResponse($product ,'Product found successfully' );
     }
-    public function salah(Request $request){
-      // return $request->ids;
-       $product = Product::whereIn('id', $request->ids)
-      ->get();
-      return $this->sendResponse(($product) ,'Product found successfully' );
-    }
+ 
     public function update(Request $request,$id )
     {
       $input = $request->all();
@@ -86,12 +81,28 @@ class ProductController extends BaseController
         }
       $product = Product::find($id);
       $product->update([
+        'name' => $input['name'],
+        'details' => $input['details'],
+        'price' => $input['price'],
+        'id_subcategorie' => $input['id_subcategorie'],
         'quantite' => $input['quantite'],
       ]);
       return $this->sendResponse(new ProductResource($product) ,'product updated successfully' );
 
     }
+    public function qttupdate(Request $request,$id )
+    {
+      $input = $request->all();
+      $validator = Validator::make($input , [
+      
+      ]);
+      $product = Product::find($id);
+      $product->update([
+        'quantite' => $input['quantite'],
+      ]);
+      return $this->sendResponse(new ProductResource($product) ,'product updated successfully' );
 
+    }
 
     public function destroy(Product $product)
     {

@@ -27,8 +27,8 @@
                 <table class="table">
                   <thead>
                     <tr>
+                    
                       <th scope="col">#</th>
-                      <th scope="col">id</th>
                       <th scope="col">client name</th>
                       <th scope="col">client email</th>
                       <th scope="col">client adresse</th>
@@ -39,7 +39,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row ">1</th>
+                 
                       <td class="pt-3">{{ categorie.id }}</td>
                       <td class="pt-3">{{ categorie.client_name }}</td>
                       <td class="pt-3">{{ categorie.client_email }}</td>
@@ -60,16 +60,13 @@
                             @click="delete_commandes(categorie)"
                           ></i>
                         </b-button>
-                        <b-button variant="success">
-                          <i class="fas fa-check-circle"></i>
-                        </b-button>
                         <b-button
                           v-b-toggle="'collapse' + index"
                           class="m-1"
                           variant="info"
                           @click="get_commande_products(categorie.id)"
                         >
-                          <i class="fas fa-check-circle fa-2x"></i>
+                         details
                         </b-button>
                       </td>
                     </tr>

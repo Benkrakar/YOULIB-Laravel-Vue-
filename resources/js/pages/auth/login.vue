@@ -95,7 +95,7 @@ export default {
       this.login(this.form);
       this.$swal({
         html: "loading ",
-        timer: 700,
+        timer: 1000,
         timerProgressBar: true,
         didOpen: () => {
           this.$swal.showLoading();

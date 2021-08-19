@@ -109,13 +109,16 @@ export default {
     commander() {
       for (let index = 0; index < this.cart.length; index++) {
         this.ids.push(this.cart[index].id);
-        console.log(this.cart[index].name);
+        this.CommandeData.product_name = this.cart[index].name;
         this.CommandeData.product_name = this.cart[index].name;
         this.CommandeData.product_price = this.cart[index].price;
         this.CommandeData.quentitie = this.cart[index].quantity;
-
+        console.log(this.CommandeData);
+         let commande = window.localStorage.getItem("commande");
+      commande = JSON.parse(commande);
+      this.CommandeData.id_commande = commande.id;
+      console.log(this.CommandeData.id_commande);
         this.creat_commande_products(this.CommandeData);
-        this.removeCommande();
         this.$swal({
           title: "La commande est bien recu",
           showClass: {
@@ -125,6 +128,8 @@ export default {
             popup: "animate__animated animate__fadeOutUp",
           },
         }).then(() => {
+        this.removeCommande();
+
           window.location = "/home";
         });
       }

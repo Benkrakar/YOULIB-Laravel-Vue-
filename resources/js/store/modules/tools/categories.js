@@ -39,6 +39,12 @@ export default {
             });
             commit("GET_CATEGORIES", response.data.data);
         },
+        
+        async get_getcategories({ commit }) {
+            let response = await axios.get("/getcategories" );
+            commit("GET_CATEGORIES", response.data.data);
+        },
+
         async creat_categorie({ commit }, credentials) {
             let response = await axios.post("/categories", credentials, {
                 headers: {

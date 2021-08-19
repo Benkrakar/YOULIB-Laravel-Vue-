@@ -71,15 +71,15 @@ export default {
   },
   created() {
     this.totalPrice();
+    this.editproductsData = this.cart
     this.$emit("name", this.totale);
+    this.$emit("data", this.editproductsData);
     //  this.$emit('name', this.totale);
 
     //  console.log(JSON.stringify(this.cart));
   },
   methods: {
-    ...mapActions({
-      update_products: "products/update_products",
-    }),
+ 
     totalPrice() {
       let total = 0;
 
@@ -100,7 +100,8 @@ export default {
         this.totalPrice();
         car.quantite = car.quantite - car.quantity;
         this.editproductsData = car;
-        this.oop();
+        // this.oop();
+         this.$emit("data", car);
         this.$emit("name", this.totale);
         return car.quantity;
       } else {
@@ -112,28 +113,17 @@ export default {
       }
     },
     oop() {
-      const fd = new FormData();
-
-      fd.id = this.editproductsData.id;
-      fd.append("id", this.editproductsData.id);
-      fd.append("image", this.editproductsData.image);
-      fd.append("name", this.editproductsData.name);
-      fd.append("price", this.editproductsData.price);
-      fd.append("details", this.editproductsData.details);
-      fd.append("quantite", this.editproductsData.quantite);
-      fd.append("id_subcategorie", this.editproductsData.id_subcategorie);
-      fd.append("_method", "put");
-      console.log(this.editproductsData.id);
-      this.update_products(fd);
+    
     },
     deccontite(car) {
       car.quantity--;
       this.ADD_TO_CART(car);
       this.totalPrice();
+      car.quantite ++;
       this.editproductsData = car;
-      this.oop();
+      // this.oop();
+       this.$emit("data",car);
       this.$emit("name", this.totale);
-      console.log(this.cart);
       return car.quantity;
     },
     delete_products(car) {

@@ -15,7 +15,7 @@
             </div>
             <!-- ///////// -->
 
-            <Paiment @name="getName" />
+            <Paiment @name="getName" @data="getData" />
           </div>
         </div>
         <!-- //////////// -->
@@ -141,6 +141,15 @@ export default {
     return {
       cart: "",
       total: "",
+       editproductsData: {
+        id: "",
+        name: "",
+        details: "",
+        image: "",
+        price: "",
+        quantite: "",
+        id_subcategorie: "",
+      },
       CommandeData: {
         client_name: "",
         client_email: "",
@@ -151,6 +160,7 @@ export default {
     };
   },
   created() {
+    this.getData();
     this.getName();
     window.onload = this.reload();
     //  console.log( this.commandeData.quantite)
@@ -159,13 +169,21 @@ export default {
   methods: {
     ...mapActions({
       creat_commande: "commandes/creat_commande",
+       update_qttproducts: "products/update_qttproducts",
     }),
     getName(value) {
       console.log(value);
       this.total = value;
     },
+     getData(value) {
+       console.log(value);
+      this.editproductsData = value;
+       console.log(value);
+    },
     createCommande() {
-      console.log(this.CommandeData);
+      console.log(this.editproductsData);
+      
+        this.update_qttproducts(this.editproductsData);
       this.CommandeData.totale = this.total;
       this.creat_commande(this.CommandeData);
     },
@@ -174,6 +192,8 @@ export default {
     },
 
     showNewCommandeModal() {
+    
+      
       this.$refs.NewCommandeModal.show();
     },
     reload() {
@@ -185,7 +205,7 @@ export default {
     save() {
       if (client_name != null) {
         this.$swal({
-          title: "Wow!",
+          title: "Done!",
           text: "Message!",
           type: "success",
         }).then(() => {

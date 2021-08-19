@@ -23,8 +23,8 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">name</th>
                     <th scope="col">image</th>
+                    <th scope="col">name</th>
                     <th scope="col">phone</th>
                     <th scope="col">email</th>
                     <th scope="col">role</th>
@@ -37,8 +37,8 @@
                 <tbody>
                   <tr v-for="(profile, index) in profiles" :key="index">
                     <th scope="row ">{{profile.id }}</th>
-                    <td class="pt-3">{{profile.name }}</td>
                     <td class=" user_img"> <img :src="`${$store.state.serverpath}/storage/${profile.image}`" alt=""></td>
+                    <td class="pt-3">{{profile.name }}</td>
                     <td class="pt-3">{{profile.phone }}</td>
                     <td class="pt-3">{{profile.email }}</td>
                     <td class="pt-3">{{profile.role }}</td>

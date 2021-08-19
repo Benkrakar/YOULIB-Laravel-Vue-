@@ -34,12 +34,14 @@
                     <th scope="col">#</th>
                     <th scope="col">nome</th>
                     <th scope="col">nombre de produits</th>
+                    <th scope="col">actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(product, index) in products.data" :key="index">
                     <th scope="row ">{{ product.id }}</th>
                     <td class="pt-3">{{ product.name }}</td>
+                    <td class="pt-3">{{ product.quantite }}</td>
 
                     <td>
                       <b-button

@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      get_categorie: "categories/get_categories",
+      get_categorie: "categories/get_getcategories",
     }),
   },
 };

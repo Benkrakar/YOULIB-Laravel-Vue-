@@ -48,12 +48,25 @@ export default {
 
             commit("GET_SUBCATEGORIES_W_CATEGORIES", response.data);
         },
+        async get_subcategories({ commit }, credentials) {
+            let response = await axios.get("/categorie/products", credentials, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
+            });
+
+            commit("GET_SUBCATEGORIES_W_CATEGORIES", response.data);
+        },
         async get_subcategorie({ commit }) {
             let response = await axios.get("/subcategories", {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token")
                 }
             });
+            commit("GET_SUBCATEGORIE", response.data.data);
+        },
+        async get_getsubcategorie({ commit }) {
+            let response = await axios.get("/getsubcategories");
             commit("GET_SUBCATEGORIE", response.data.data);
         },
         async creat_subcategorie({ commit }, credentials) {

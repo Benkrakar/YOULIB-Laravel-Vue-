@@ -27,7 +27,6 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
                       <th scope="col">id</th>
                       <th scope="col">client name</th>
                       <th scope="col">client email</th>
@@ -38,7 +37,6 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row ">1</th>
                       <td class="pt-3">{{ message.id }}</td>
                       <td class="pt-3">{{ message.client_name }}</td>
                       <td class="pt-3">{{ message.client_email }}</td>
@@ -46,11 +44,11 @@
                       <td class="pt-3">{{ message.created_at }}</td>
 
                       <td>
-                        <b-button variant="danger">
+                        <b-button
+                          variant="danger"
+                          @click="delete_message(message)"
+                        >
                           <i class="fas fa-trash-alt"></i>
-                        </b-button>
-                        <b-button variant="success">
-                          <i class="fas fa-check-circle"></i>
                         </b-button>
                         <b-button
                           v-b-toggle="'collapse' + index"
@@ -106,6 +104,22 @@ export default {
       get_messages: "messages/get_messages",
       delete_messages: "messages/delete_messages",
     }),
+    delete_message(message) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't to delte this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.delete_messages(message.id);
+          this.$swal("Deleted!", "Your file has been deleted.", "success");
+        }
+      });
+    },
   },
 };
 </script>

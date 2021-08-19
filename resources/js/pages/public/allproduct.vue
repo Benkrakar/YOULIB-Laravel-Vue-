@@ -122,8 +122,6 @@ export default {
       }),
        get_products_subcategorie(){
              this.get_product_subcategorie(this.$route.params.id)
-           
-             
         },
 }
 }

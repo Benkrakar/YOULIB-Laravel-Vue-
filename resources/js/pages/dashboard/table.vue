@@ -25,7 +25,7 @@
                 <div class="d-flex justify-content-around">
                   <i class="fas fa-shopping-bag fa-2x"></i>
                   <b-card-text class="mt-2">Commandes</b-card-text>
-                  <h2>22</h2>
+                  <h2>{{commandes.length}}</h2>
                 </div>
               </b-card>
             </div>
@@ -55,13 +55,13 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">produit</th>
+                      <th scope="col">adresse</th>
                       <th scope="col">status de livraison</th>
-                      <th scope="col">quantite</th>
+                      <th scope="col">date de commande</th>
                     </tr>
                   </thead>
                   <tbody
-                    v-for="(commande, index) in commandes.slice(-8)"
+                    v-for="(commande, index) in commandes.slice(-5)"
                     :key="index"
                   >
                     <tr>
@@ -84,7 +84,7 @@
           <div class="col-md-4">
             <div class="row">
               <div class="col-md-12 mt-5 category-table">
-                <h3>les dernières commandes</h3>
+                <h3>les utilisateurs</h3>
                 <table class="table table-striped">
                   <thead>
                     <tr>
